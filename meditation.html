@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Khettarama </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+   <div class="container">
+     <a class="navbar-brand" href="index.html">Khettarama <span>Foundation</span></a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="oi oi-menu"></span> Menu
+   </button>
+
+   <div class="collapse navbar-collapse" id="ftco-nav">
+       <ul class="navbar-nav ml-auto">
+         <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+         <li class="nav-item"><a href="tours.html" class="nav-link">Historic Tours</a></li>
+         <li class="nav-item"><a href="explore.html" class="nav-link">Explore & Research</a></li>
+         <li class="nav-item"><a href="meditation.html" class="nav-link">Meditation & Retreats</a></li>
+         <li class="nav-item"><a href="community.html" class="nav-link">Community Programs</a></li>
+         <li class="nav-item"><a href="donate.html" class="nav-link">Donate & Support</a></li>
+         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+     </ul>
+ </div>
+</div>
+</nav>
+<!-- END nav -->
+
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_c.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+      <div class="col-md-9 ftco-animate pb-5 text-center">
+         <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
+                 class="fa fa-chevron-right"></i></a></span> <span>Meditation & Retreats<i
+               class="fa fa-chevron-right"></i></span></p>
+         <h1 class="mb-0 bread">Meditation & Retreats</h1>
+     </div>
+ </div>
+</div>
+</section>
+
+<!-- Filter Bar -->
+<div class="filter-bar d-flex align-items-center justify-content-between p-3 bg-light rounded">
+  <form id="filterForm" class="d-flex w-100 align-items-center">
+    <!-- Search Bar -->
+    <div class="form-group mb-0 mr-2 w-50">
+      <label for="searchPackage" class="sr-only">Search</label>
+      <input type="text" id="searchPackage" class="form-control" placeholder="Search by package name"
+        onkeyup="filterPackages()">
+    </div>
+    <!-- Dropdown for Package Selection -->
+    <div class="form-group mb-0 mr-2">
+      <label for="packageDropdown" class="mr-2">Select Package:</label>
+      <select id="packageDropdown" class="form-control" onchange="filterPackages()">
+        <option value="all">All</option>
+        <!-- Options will be dynamically populated -->
+      </select>
+    </div>
+    <!-- Price Range Filter -->
+    <div class="form-group mb-0 mr-2">
+      <label for="priceRange" class="mr-2">Price Range:</label>
+      <select id="priceRange" class="form-control" onchange="filterPackages()">
+        <option value="all">All</option>
+        <option value="100-200">$100 - $200</option>
+        <option value="200-300">$200 - $300</option>
+        <option value="300-400">$300 - $400</option>
+        <option value="400-500">$400 - $500</option>
+        <option value="500-1000">$500 - $1000</option>
+        <option value="1000-2000">$1000+</option>
+      </select>
+    </div>
+    <!-- Price Slider -->
+    <div class="form-group mb-0 mr-2">
+      <label for="priceSlider" class="mr-2">Price Slider:</label>
+      <input type="range" id="priceSlider" min="100" max="2000" step="50" value="2000"
+        oninput="updateSliderValue(this.value); filterPackages()">
+      <span id="sliderValue">Up to $2000</span>
+    </div>
+    <!-- Submit Button -->
+    <button type="button" class="btn btn-primary ml-2" onclick="filterPackages()">Filter</button>
+  </form>
+</div>
+
+<script>
+  // Populate dropdown with package names dynamically
+  document.addEventListener("DOMContentLoaded", () => {
+    const packageDropdown = document.getElementById("packageDropdown");
+    const packages = document.querySelectorAll(".project-wrap");
+
+    packages.forEach((packageElement) => {
+      const packageName = packageElement.querySelector("h3 a").textContent.trim();
+      const option = document.createElement("option");
+      option.value = packageName.toLowerCase();
+      option.textContent = packageName;
+      packageDropdown.appendChild(option);
+    });
+  });
+
+  function filterPackages() {
+    const searchInput = document.getElementById("searchPackage").value.toLowerCase();
+    const selectedPackage = document.getElementById("packageDropdown").value;
+    const selectedRange = document.getElementById("priceRange").value;
+    const sliderValue = parseInt(document.getElementById("priceSlider").value, 10);
+    const packages = document.querySelectorAll(".project-wrap");
+
+    packages.forEach((packageElement) => {
+      const packageName = packageElement.querySelector("h3 a").textContent.toLowerCase();
+      const packagePrice = parseInt(
+        packageElement.querySelector(".price").textContent.replace("$", "").trim(),
+        10
+      );
+
+      // Parse price range into min and max
+      let matchesPriceRange = true;
+      if (selectedRange !== "all") {
+        const [minPrice, maxPrice] = selectedRange.includes("+") ?
+          [1000, Infinity] :
+          selectedRange.split("-").map(Number);
+        matchesPriceRange = packagePrice >= minPrice && packagePrice <= maxPrice;
+      }
+
+      // Check if slider value is also satisfied
+      const matchesSlider = packagePrice <= sliderValue;
+
+      // Check search term against name
+      const matchesSearch = packageName.includes(searchInput);
+
+      // Check selected package filter
+      const matchesPackage = selectedPackage === "all" || packageName === selectedPackage;
+
+      // Show or hide packages based on all conditions
+      if (matchesSearch && matchesPriceRange && matchesSlider && matchesPackage) {
+        packageElement.parentElement.style.display = "block";
+      } else {
+        packageElement.parentElement.style.display = "none";
+      }
+    });
+  }
+
+  function updateSliderValue(value) {
+    document.getElementById("sliderValue").textContent = `Up to $${value}`;
+  }
+</script>
+
+<style>
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  .filter-bar .form-group {
+    margin-bottom: 0;
+    flex-grow: 1;
+  }
+
+  .filter-bar .form-group input,
+  .filter-bar .form-group select {
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .filter-bar .form-group label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 10px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .filter-bar .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: #ff5a5f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .filter-bar .btn:hover {
+    background-color: #e94e54;
+  }
+
+  .filter-bar #sliderValue {
+    font-size: 14px;
+    color: #555;
+    margin-left: 10px;
+    font-weight: 500;
+  }
+
+  .filter-bar #priceSlider {
+    width: 100%;
+    max-width: 200px;
+    margin-left: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .filter-bar {
+      flex-wrap: wrap;
+    }
+
+    .filter-bar .form-group,
+    .filter-bar .btn {
+      flex: 1 1 100%;
+      margin-bottom: 10px;
+    }
+  }
+</style>
+
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row">
+      <!-- Package 1 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/mindful-starter.jpg);">
+            <span class="price">$100</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Mindful Starter Package</a></h3>
+            <p>1x 60-minute guided meditation session</p>
+            <p>Access to a 7-day mindfulness challenge (PDF/eBook)</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Mindful Starter Package')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 2 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/stress-relief.jpg);">
+            <span class="price">$150</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Stress Relief Essentials</a></h3>
+            <p>2x 60-minute guided meditation sessions</p>
+            <p>Introduction to breathing techniques</p>
+            <p>30-day access to pre-recorded meditation videos</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Stress Relief Essentials')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 3 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/focus-boost.jpg);">
+            <span class="price">$200</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Focus & Productivity Boost</a></h3>
+            <p>3x 60-minute meditation sessions</p>
+            <p>Personalized meditation guidance</p>
+            <p>Digital focus planner for 1 month</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Focus & Productivity Boost')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 4 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/relaxation-retreat.jpg);">
+            <span class="price">$250</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Relaxation Mini-Retreat</a></h3>
+            <p>4x 45-minute sessions (virtual or in-person)</p>
+            <p>Aromatherapy essential oils kit</p>
+            <p>Guided progressive muscle relaxation recording</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Relaxation Mini-Retreat')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 5 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/inner-peace.jpg);">
+            <span class="price">$300</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Inner Peace Beginner Plan</a></h3>
+            <p>5x 60-minute sessions</p>
+            <p>Access to a private online meditation community</p>
+            <p>Guided mindfulness exercises for beginners (PDF/Audio)</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Inner Peace Beginner Plan')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 6 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/emotional-healing.jpg);">
+            <span class="price">$350</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Emotional Healing Journey</a></h3>
+            <p>6x 60-minute sessions</p>
+            <p>Chakra balancing guided meditations</p>
+            <p>Journaling prompts for self-reflection</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Emotional Healing Journey')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 7 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/mind-body-balance.jpg);">
+            <span class="price">$400</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Mind-Body Balance</a></h3>
+            <p>7x 60-minute meditation & mindfulness sessions</p>
+            <p>Yoga and meditation integration techniques</p>
+            <p>Stress reduction workbook</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Mind-Body Balance')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 8 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/transformative-zen.jpg);">
+            <span class="price">$500</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Transformative Zen Retreat</a></h3>
+            <p>8x 75-minute sessions</p>
+            <p>Personalized meditation coaching</p>
+            <p>Guided imagery meditations for emotional release</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Transformative Zen Retreat')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 9 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/sound-therapy.jpg);">
+            <span class="price">$600</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Meditation & Sound Therapy Combo</a></h3>
+            <p>10x 90-minute meditation sessions</p>
+            <p>Sound healing (singing bowls, gongs)</p>
+            <p>Complimentary meditation accessories (cushion or mat)</p>
+            <button class="btn connect-btn"
+              onclick="connectToWhatsApp('Meditation & Sound Therapy Combo')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 10 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/holistic-wellness.jpg);">
+            <span class="price">$700</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Holistic Wellness Journey</a></h3>
+            <p>12x 60-minute sessions</p>
+            <p>Custom daily mindfulness plan</p>
+            <p>Introduction to mindful eating & lifestyle practices</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Holistic Wellness Journey')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 11 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/spiritual-awakening.jpg);">
+            <span class="price">$800</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Spiritual Awakening Package</a></h3>
+            <p>14x 75-minute guided meditation sessions</p>
+            <p>Advanced breathwork techniques</p>
+            <p>1-on-1 meditation mentor support</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Spiritual Awakening Package')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 12 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/corporate-wellness.jpg);">
+            <span class="price">$1000</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Corporate Wellness Package</a></h3>
+            <p>10 sessions for groups (up to 10 participants)</p>
+            <p>Stress management workshops</p>
+            <p>Access to corporate meditation app</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Corporate Wellness Package')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 13 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/luxury-retreat.jpg);">
+            <span class="price">$1200</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Luxury Retreat Package</a></h3>
+            <p>Weekend in-person retreat</p>
+            <p>Group meditations, yoga, and meals</p>
+            <p>Personalized energy healing session</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Luxury Retreat Package')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 14 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/mindful-transformation.jpg);">
+            <span class="price">$1400</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Mindful Lifestyle Transformation</a></h3>
+            <p>20x 60-minute meditation sessions</p>
+            <p>Complete mindfulness guide (eBooks, videos, recordings)</p>
+            <p>Weekly check-ins with a meditation coach</p>
+            <button class="btn connect-btn"
+              onclick="connectToWhatsApp('Mindful Lifestyle Transformation')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 15 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/zen-mastery.jpg);">
+            <span class="price">$2000+</span>
+          </a>
+          <div class="text p-4">
+            <h3><a href="#">Ultimate Zen Mastery</a></h3>
+            <p>Lifetime access to meditation courses</p>
+            <p>Monthly 1-on-1 sessions with a mindfulness expert</p>
+            <p>VIP access to exclusive retreats and live events</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Ultimate Zen Mastery')">Connect</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function connectToWhatsApp(packageName) {
+    // Prompt user to enter their details
+    const name = prompt("Please enter your name:");
+    if (!name) {
+      alert("Name is required!");
+      return;
+    }
+
+    const email = prompt("Please enter your email:");
+    if (!email || !validateEmail(email)) {
+      alert("Valid email is required!");
+      return;
+    }
+
+    const phone = prompt("Please enter your phone number:");
+    if (!phone) {
+      alert("Phone number is required!");
+      return;
+    }
+
+    // Format the phone number with country code for Sri Lanka (+94)
+    const formattedPhone = "94760073341"; // Replace with the correct WhatsApp number
+
+    // Create the message content
+    const message = `Hello,%0AI%20am%20interested%20in%20the%20"${packageName}"%20package.%0A%0AName:%20${encodeURIComponent(
+      name
+    )}%0AEmail:%20${encodeURIComponent(email)}%0APhone:%20${encodeURIComponent(
+      phone
+    )}%0A%0APlease%20provide%20more%20details.`;
+
+    // Generate WhatsApp link
+    const whatsappURL = `https://wa.me/${formattedPhone}?text=${message}`;
+
+    // Redirect to WhatsApp
+    window.location.href = whatsappURL;
+  }
+
+  // Helper function to validate email addresses
+  function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+</script>
+<style>
+  .btn.connect-btn {
+    background-color: #25d366;
+    /* WhatsApp green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn.connect-btn:hover {
+    background-color: #128c7e;
+    /* Darker WhatsApp green */
+  }
+
+  .project-wrap {
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .project-wrap .img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .project-wrap .text {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+  }
+
+  .project-wrap .text h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .project-wrap .text p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+  }
+</style>
+
+
+
+<section class="ftco-intro ftco-section ftco-no-pt">
+ <div class="container">
+    <div class="row justify-content-center">
+       <div class="col-md-12 text-center">
+          <div class="img"  style="background-image: url(images/bg_c2.jpg);">
+             <div class="overlay"></div>
+             <h2>We Are Pacific A Travel Agency</h2>
+             <p>We can manage your dream building A small river named Duden flows by their place</p>
+             <p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
+         </div>
+     </div>
+ </div>
+</div>
+</section>
+
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(images/bg_3.jpg);">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md pt-5">
+        <div class="ftco-footer-widget pt-md-5 mb-4">
+          <h2 class="ftco-heading-2">About Us</h2>
+          <p>Dedicated to preserving spirituality, exploring history, and inspiring a sense of peace, the
+            Khettarama Foundation invites you to embark on a journey of enlightenment and cultural
+            discovery.</p>
+          <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md pt-5 border-left">
+        <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+          <h2 class="ftco-heading-2">Quick Links</h2>
+          <ul class="list-unstyled">
+            <li><a href="about.html" class="py-2 d-block">About Us</a></li>
+            <li><a href="explore.html" class="py-2 d-block">Explore & Research</a></li>
+            <li><a href="meditation.html" class="py-2 d-block">Meditation & Retreats</a></li>
+            <li><a href="community.html" class="py-2 d-block">Community Programs</a></li>
+            <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md pt-5 border-left">
+        <div class="ftco-footer-widget pt-md-5 mb-4">
+          <h2 class="ftco-heading-2">Contact Us</h2>
+          <div class="block-23 mb-3">
+            <ul>
+              <li><span class="icon fa fa-map-marker"></span><span class="text">SRI SUMANGALA PIREVAN
+                  SCHOOL, Kovana, Hindagolla, Kurunegala, Sri Lanka</span></li>
+              <li><a href="tel:+94702278344"><span class="icon fa fa-phone"></span><span class="text">+94 702 278
+                    344</span></a></li>
+              <li><a href="tel:+94372236034"><span class="icon fa fa-phone"></span><span class="text">+94 372 236
+                    034</span></a></li>
+              <li><a href="tel:+94713000357"><span class="icon fa fa-phone"></span><span class="text">+94 713 000
+                    357</span></a></li>
+              <li><a href="mailto:revkowanepalithathero@gmail.com"><span class="icon fa fa-paper-plane"></span><span
+                    class="text">revkowanepalithathero@gmail.com</span></a></li>
+              <li><a href="mailto:damma1984@gmail.com"><span class="icon fa fa-paper-plane"></span><span
+                    class="text">damma1984@gmail.com</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p>
+          Copyright &copy;<script>
+            document.write(new Date().getFullYear());
+          </script> All rights reserved | Built with <i class="fa fa-heart" aria-hidden="true"></i> by
+          Khettarama Foundation.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

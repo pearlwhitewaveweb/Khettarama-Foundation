@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Khettarama Foundation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="css/animate.css">
+
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Custom Styling */
+    .donation-form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .donation-gallery img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      object-fit: cover;
+      height: 200px;
+    }
+
+    .donation-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+      gap: 20px;
+    }
+
+    .donation-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .donation-container>.col {
+      flex: 1 1 48%;
+    }
+
+    @media (max-width: 768px) {
+      .donation-container>.col {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+
+
+ <style>
+  
+
+   .gallery-section {
+     padding: 50px 20px;
+     background-color:white;
+   }
+
+   .gallery-section h2 {
+     text-align: center;
+     font-size: 2.5rem;
+     color:whitesmoke;
+     margin-bottom: 20px;
+   }
+
+   .gallery-section p {
+     text-align: center;
+     font-size: 1rem;
+     color:white;
+     margin-bottom: 40px;
+   }
+
+   .gallery-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+     gap: 20px;
+     margin: 0 auto;
+     max-width: 1200px;
+   }
+
+   .gallery-item {
+     position: relative;
+     overflow: hidden;
+     border-radius: 8px;
+     cursor: pointer;
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+   }
+
+   .gallery-item img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     transition: transform 0.3s ease;
+   }
+
+   .gallery-item:hover img {
+     transform: scale(1.1);
+   }
+
+   .gallery-overlay {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.5);
+     opacity: 0;
+     transition: opacity 0.3s ease;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+
+   .gallery-item:hover .gallery-overlay {
+     opacity: 1;
+   }
+
+   .gallery-overlay h3 {
+     color: #fff;
+     font-size: 1.5rem;
+     margin: 0;
+   }
+
+   .gallery-overlay p {
+     color: #ddd;
+     font-size: 1rem;
+     margin-top: 5px;
+   }
+
+   /* Lightbox */
+   .lightbox {
+     display: none;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.9);
+     align-items: center;
+     justify-content: center;
+     z-index: 1000;
+   }
+
+   .lightbox img {
+     max-width: 90%;
+     max-height: 80%;
+     border-radius: 8px;
+   }
+
+   .lightbox .close {
+     position: absolute;
+     top: 20px;
+     right: 20px;
+     color: #fff;
+     font-size: 2rem;
+     cursor: pointer;
+   }
+ </style>
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Khettarama <span>Foundation</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="tours.html" class="nav-link">Historic Tours</a></li>
+          <li class="nav-item"><a href="explore.html" class="nav-link">Explore & Research</a></li>
+          <li class="nav-item"><a href="meditation.html" class="nav-link">Meditation & Retreats</a></li>
+          <li class="nav-item"><a href="community.html" class="nav-link">Community Programs</a></li>
+          <li class="nav-item"><a href="donate.html" class="nav-link">Donate & Support</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </div>
+    </div>
+  </nav>
+  <!-- END nav -->
+
+ <div class="hero-wrap js-fullheight" style="background-image: url('images/Donations.jpg');">
+   <div class="overlay"></div>
+   <div class="container">
+     <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+       <div class="col-md-7 ftco-animate">
+         <span class="subheading"></span>
+         <h1 class="mb-4">Donations</h1>
+         
+       </div>
+       <a href="https://vimeo.com/45830194"
+         class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+         <span class="fa fa-play"></span>
+       </a>
+     </div>
+   </div>
+ </div>
+
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<section class="gallery-section" style="background-color: black;">
+  <h2>Our Social Work Gallery</h2>
+  <p>Explore the impactful initiatives and community outreach programs we’ve carried out.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox('images/gallery1.jpg')">
+      <img src="images/ravana_exploration.jpg" alt="Community Outreach">
+      <div class="gallery-overlay">
+        <div>
+          <h3>Community Outreach</h3>
+          <p>Empowering Families</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/Tree Plantation.jpg')">
+      <img src="images/Tree Plantation.jpg" alt="Tree Plantation">
+      <div class="gallery-overlay">
+        <div>
+          <h3>Tree Plantation</h3>
+          <p>Environmental Conservation</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/edu support.jpg')">
+      <img src="images/edu support.jpg" alt="Educational Support">
+      <div class="gallery-overlay">
+        <div>
+          <h3>Educational Support</h3>
+          <p>Building a Better Future</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/health for all.jpg')">
+      <img src="images/Health for All.jpg" alt="Medical Camps">
+      <div class="gallery-overlay">
+        <div>
+          <h3>Medical Camps</h3>
+          <p>Health for All</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/gallery5.jpg')">
+      <img src="images/social 3.jpg" alt="Ahikuntika Heritage">
+      <div class="gallery-overlay">
+        <div>
+          <h3>Ahikuntika Heritage</h3>
+          <p>Preserving Culture</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/gallery6.jpg')">
+      <img src="images/japan_sri_lanka.jpg" alt="Volunteer Work">
+      <div class="gallery-overlay">
+        <div>
+          <h3>Volunteer Work</h3>
+          <p>Engaging Global Volunteers</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="Lightbox Image">
+</div>
+
+<script>
+  function openLightbox(imageUrl) {
+    document.getElementById('lightbox-img').src = imageUrl;
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+</script>
+
+
+   <section class="ftco-section" style="background-color: white;">
+     <div class="container">
+       <div class="donation-container">
+         <!-- Donation Form -->
+         <div class="col">
+           <div class="donation-form">
+             <h3 class="heading">Make a Donation</h3>
+             <form action="#" method="POST">
+               <div class="form-group">
+                 <label for="name">Your Name *</label>
+                 <input type="text" id="name" class="form-control" name="name" placeholder="Enter your name" required>
+               </div>
+               <div class="form-group">
+                 <label for="email">Your Email *</label>
+                 <input type="email" id="email" class="form-control" name="email" placeholder="Enter your email"
+                   required>
+               </div>
+               <div class="form-group">
+                 <label for="phone">Phone Number *</label>
+                 <input type="tel" id="phone" class="form-control" name="phone" placeholder="Enter your phone number"
+                   required>
+               </div>
+               <div class="form-group">
+                 <label for="amount">Donation Amount *</label>
+                 <input type="number" id="amount" class="form-control" name="amount" placeholder="Enter donation amount"
+                   required>
+               </div>
+               <div class="form-group">
+                 <label for="message">Message</label>
+                 <textarea id="message" name="message" cols="30" rows="5" class="form-control"
+                   placeholder="Your message"></textarea>
+               </div>
+               <div class="form-group">
+                 <input type="submit" value="Donate Now" class="btn btn-primary py-3 px-4">
+               </div>
+             </form>
+           </div>
+         </div>
+
+         <!-- Gallery Section -->
+         <div class="col">
+           <div class="donation-gallery">
+             <img src="images/image_1.jpg" alt="Donation Image 1">
+             <img src="images/image_2.jpg" alt="Donation Image 2">
+             <img src="images/image_3.jpg" alt="Donation Image 3">
+             <img src="images/image_4.jpg" alt="Donation Image 4">
+             <img src="images/image_5.jpg" alt="Donation Image 5">
+             <img src="images/image_6.jpg" alt="Donation Image 6">
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+
+  <section class="ftco-intro ftco-section ftco-no-pt">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
+          <div class="img" style="background-image: url(images/bg_22.jpg);">
+            <div class="overlay"></div>
+            <h2>Your Contributions Make a Difference</h2>
+            <p>Join us in making a positive impact through our programs and initiatives.</p>
+            <p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Learn More</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(images/bg_3.jpg);">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md pt-5">
+        <div class="ftco-footer-widget pt-md-5 mb-4">
+          <h2 class="ftco-heading-2">About Us</h2>
+          <p>Dedicated to preserving spirituality, exploring history, and inspiring a sense of peace, the
+            Khettarama Foundation invites you to embark on a journey of enlightenment and cultural
+            discovery.</p>
+          <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md pt-5 border-left">
+        <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+          <h2 class="ftco-heading-2">Quick Links</h2>
+          <ul class="list-unstyled">
+            <li><a href="about.html" class="py-2 d-block">About Us</a></li>
+            <li><a href="explore.html" class="py-2 d-block">Explore & Research</a></li>
+            <li><a href="meditation.html" class="py-2 d-block">Meditation & Retreats</a></li>
+            <li><a href="community.html" class="py-2 d-block">Community Programs</a></li>
+            <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md pt-5 border-left">
+        <div class="ftco-footer-widget pt-md-5 mb-4">
+          <h2 class="ftco-heading-2">Contact Us</h2>
+          <div class="block-23 mb-3">
+            <ul>
+              <li><span class="icon fa fa-map-marker"></span><span class="text">SRI SUMANGALA PIREVAN
+                  SCHOOL, Kovana, Hindagolla, Kurunegala, Sri Lanka</span></li>
+              <li><a href="tel:+94702278344"><span class="icon fa fa-phone"></span><span class="text">+94 702 278
+                    344</span></a></li>
+              <li><a href="tel:+94372236034"><span class="icon fa fa-phone"></span><span class="text">+94 372 236
+                    034</span></a></li>
+              <li><a href="tel:+94713000357"><span class="icon fa fa-phone"></span><span class="text">+94 713 000
+                    357</span></a></li>
+              <li><a href="mailto:revkowanepalithathero@gmail.com"><span class="icon fa fa-paper-plane"></span><span
+                    class="text">revkowanepalithathero@gmail.com</span></a></li>
+              <li><a href="mailto:damma1984@gmail.com"><span class="icon fa fa-paper-plane"></span><span
+                    class="text">damma1984@gmail.com</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p>
+          Copyright &copy;<script>
+            document.write(new Date().getFullYear());
+          </script> All rights reserved | Built with <i class="fa fa-heart" aria-hidden="true"></i> by
+          Khettarama Foundation.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+ <!-- loader -->
+ <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+     <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+     <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+     </svg></div>
+
+
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquery-migrate-3.0.1.min.js"></script>
+ <script src="js/popper.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script src="js/jquery.easing.1.3.js"></script>
+ <script src="js/jquery.waypoints.min.js"></script>
+ <script src="js/jquery.stellar.min.js"></script>
+ <script src="js/owl.carousel.min.js"></script>
+ <script src="js/jquery.magnific-popup.min.js"></script>
+ <script src="js/jquery.animateNumber.min.js"></script>
+ <script src="js/bootstrap-datepicker.js"></script>
+ <script src="js/scrollax.min.js"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
+ </script>
+ <script src="js/google-map.js"></script>
+ <script src="js/main.js"></script>
+</body>
+
+</html>

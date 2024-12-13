@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Khettarama</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="css/jquery.timepicker.css">
+	<link rel="stylesheet" href="css/flaticon.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">Khettarama<span> Foundation</span></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+					<li class="nav-item"><a href="tours.html" class="nav-link">Historic Tours</a></li>
+					<li class="nav-item"><a href="explore.html" class="nav-link">Explore & Research</a></li>
+					<li class="nav-item"><a href="meditation.html" class="nav-link">Meditation & Retreats</a></li>
+					<li class="nav-item"><a href="community.html" class="nav-link">Community Programs</a></li>
+					<li class="nav-item"><a href="donate.html" class="nav-link">Donate & Support</a></li>
+					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_5.jpg');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+				<div class="col-md-7 ftco-animate">
+					<span class="subheading">Welcome to Khettarama Foundation</span>
+					<h1 class="mb-4">Explore, Meditate, and Connect with the World</h1>
+					<p class="caps">Join us in discovering serenity, wisdom, and global connections for a better future.
+					</p>
+				</div>
+				<a href="https://vimeo.com/45830194"
+					class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+					<span class="fa fa-play"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+
+	<section class="ftco-section ftco-no-pb ftco-no-pt">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="ftco-search d-flex justify-content-center">
+						<div class="row">
+							<div class="col-md-12 nav-link-wrap">
+								<div class="nav nav-pills text-center" id="v-pills-tab" role="tablist"
+									aria-orientation="vertical">
+									<a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1"
+										role="tab" aria-controls="v-pills-1" aria-selected="true">Tours</a>
+									<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab"
+										aria-controls="v-pills-2" aria-selected="false">Researches</a>
+									<a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
+										aria-controls="v-pills-3" aria-selected="false">Meditations</a>
+								</div>
+							</div>
+							<div class="col-md-12 tab-wrap">
+								<div class="tab-content" id="v-pills-tabContent">
+									<!-- Tours Tab -->
+									<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
+										aria-labelledby="v-pills-1-tab">
+										<form action="tours.html" method="get" class="search-property-1">
+											<div class="row no-gutters">
+												<div class="col-md d-flex">
+													<div class="form-group p-4 border-0">
+														<label for="#">Destination</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-search"></span></div>
+															<input type="text" name="destination" class="form-control"
+																placeholder="Search place">
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4">
+														<label for="#">Check-in Date</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-calendar"></span></div>
+															<input type="text" name="checkin_date"
+																class="form-control checkin_date"
+																placeholder="Check In Date">
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4">
+														<label for="#">Check-out Date</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-calendar"></span></div>
+															<input type="text" name="checkout_date"
+																class="form-control checkout_date"
+																placeholder="Check Out Date">
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4">
+														<label for="#">Price Limit</label>
+														<div class="form-field">
+															<div class="select-wrap">
+																<div class="icon"><span class="fa fa-chevron-down"></span>
+																</div>
+																<select name="price_limit" class="form-control">
+																	<option value="100">$100</option>
+																	<option value="500">$500</option>
+																	<option value="1000">$1000</option>
+																	<option value="5000">$5000</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group d-flex w-100 border-0">
+														<div class="form-field w-100 align-items-center d-flex">
+															<input type="submit" value="Search"
+																class="align-self-stretch form-control btn btn-primary">
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+
+									<!-- Researches Tab -->
+									<div class="tab-pane fade" id="v-pills-2" role="tabpanel"
+										aria-labelledby="v-pills-2-tab">
+										<form action="explore.html" method="get" class="search-property-1">
+											<div class="row no-gutters">
+												<div class="col-md d-flex">
+													<div class="form-group p-4 border-0">
+														<label for="#">Destination</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-search"></span></div>
+															<input type="text" name="destination" class="form-control"
+																placeholder="Search place">
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4">
+														<label for="#">Check-in Date</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-calendar"></span></div>
+															<input type="text" name="checkin_date"
+																class="form-control checkin_date"
+																placeholder="Check In Date">
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4">
+														<label for="#">Check-out Date</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-calendar"></span></div>
+															<input type="text" name="checkout_date"
+																class="form-control checkout_date"
+																placeholder="Check Out Date">
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4">
+														<label for="#">Price Limit</label>
+														<div class="form-field">
+															<div class="select-wrap">
+																<div class="icon"><span class="fa fa-chevron-down"></span>
+																</div>
+																<select name="price_limit" class="form-control">
+																	<option value="100">$100</option>
+																	<option value="500">$500</option>
+																	<option value="1000">$1000</option>
+																	<option value="5000">$5000</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group d-flex w-100 border-0">
+														<div class="form-field w-100 align-items-center d-flex">
+															<input type="submit" value="Search"
+																class="align-self-stretch form-control btn btn-primary">
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+
+									<!-- Meditations Tab -->
+									<div class="tab-pane fade" id="v-pills-3" role="tabpanel"
+										aria-labelledby="v-pills-3-tab">
+										<form action="meditation.html" method="get" class="search-property-1">
+											<div class="row no-gutters">
+												<div class="col-md d-flex">
+													<div class="form-group p-4 border-0">
+														<label for="#">Destination</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-search"></span></div>
+															<input type="text" name="destination" class="form-control"
+																placeholder="Search place">
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4">
+														<label for="#">Check-in Date</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-calendar"></span></div>
+															<input type="text" name="checkin_date"
+																class="form-control checkin_date"
+																placeholder="Check In Date">
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4">
+														<label for="#">Check-out Date</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-calendar"></span></div>
+															<input type="text" name="checkout_date"
+																class="form-control checkout_date"
+																placeholder="Check Out Date">
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4">
+														<label for="#">Price Limit</label>
+														<div class="form-field">
+															<div class="select-wrap">
+																<div class="icon"><span class="fa fa-chevron-down"></span>
+																</div>
+																<select name="price_limit" class="form-control">
+																	<option value="100">$100</option>
+																	<option value="500">$500</option>
+																	<option value="1000">$1000</option>
+																	<option value="5000">$5000</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group d-flex w-100 border-0">
+														<div class="form-field w-100 align-items-center d-flex">
+															<input type="submit" value="Search"
+																class="align-self-stretch form-control btn btn-primary">
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
+
+	
+
+	
+
+
+
+		<section class="ftco-section services-section">
+			<div class="container">
+				<div class="row d-flex">
+					<div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate d-flex align-items-center">
+						<div class="w-100">
+							<span class="subheading">Welcome to Khettarama Foundation</span>
+							<h2 class="mb-4">Embark on a Journey of Spirituality and History</h2>
+							<p>Discover the essence of history, culture, and spirituality with Khettarama Foundation. Our
+								mission is to connect you with the roots of ancient wisdom, scenic journeys, and meditative
+								experiences.</p>
+							<p>Join us to explore historic landmarks, serene meditation retreats, and vibrant community
+								programs that enrich the soul and mind. Let Khettarama be your guide to unlocking peace and
+								purpose in this transformative journey.</p>
+							<p><a href="explore.html" class="btn btn-primary py-3 px-4">Explore Our Programs</a></p>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+								<div class="services services-1 color-1 d-block img"
+									style="background-image: url(images/services-1.jpg);">
+									<div class="icon d-flex align-items-center justify-content-center"><span
+											class="flaticon-historic"></span></div>
+									<div class="media-body">
+										<h3 class="heading mb-3">Historic Tours</h3>
+										<p>Walk through the footsteps of ancient civilizations and experience timeless
+											heritage.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+								<div class="services services-1 color-2 d-block img"
+									style="background-image: url(images/services-2.jpg);">
+									<div class="icon d-flex align-items-center justify-content-center"><span
+											class="flaticon-meditation"></span></div>
+									<div class="media-body">
+										<h3 class="heading mb-3">Meditation Retreats</h3>
+										<p>Find inner peace and mindfulness in serene and spiritually significant locations.
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+								<div class="services services-1 color-3 d-block img"
+									style="background-image: url(images/services-3.jpg);">
+									<div class="icon d-flex align-items-center justify-content-center"><span
+											class="flaticon-community"></span></div>
+									<div class="media-body">
+										<h3 class="heading mb-3">Community Programs</h3>
+										<p>Engage in initiatives that foster connections and promote wellness within
+											communities.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+								<div class="services services-1 color-4 d-block img"
+									style="background-image: url(images/services-4.jpg);">
+									<div class="icon d-flex align-items-center justify-content-center"><span
+											class="flaticon-travel"></span></div>
+									<div class="media-body">
+										<h3 class="heading mb-3">Travel Experiences</h3>
+										<p>Explore picturesque destinations while embracing spirituality and nature's beauty.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="ftco-section img ftco-select-destination" style="background-image: url(images/bg_3.jpg);">
+			<div class="container">
+				<div class="row justify-content-center pb-4">
+					<div class="col-md-12 heading-section text-center ftco-animate">
+						<span class="subheading">Our Main Services</span>
+						<h2 class="mb-4">Explore, Connect, and Grow</h2>
+						<p>Discover how we bring history, spirituality, and community together through our core services.</p>
+					</div>
+				</div>
+			</div>
+			<div class="container container-2">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="carousel-destination owl-carousel ftco-animate">
+							<!-- Spiritual Retreats -->
+							<div class="item">
+								<div class="project-destination">
+									<a href="meditation.html" class="img" style="background-image: url(images/services-2.jpg);">
+										<div class="text">
+											<h3>Spiritual Retreats</h3>
+											<span>Meditation & Wellness</span>
+											<p>Reconnect with your inner self through guided meditation and wellness programs.
+											</p>
+										</div>
+									</a>
+								</div>
+							</div>
+							<!-- Historic Tours -->
+							<div class="item">
+								<div class="project-destination">
+									<a href="tours.html" class="img" style="background-image: url(images/services-1.jpg);">
+										<div class="text">
+											<h3>Historic Tours</h3>
+											<span>Explore Sacred Sites</span>
+											<p>Embark on a journey to ancient landmarks and sacred sites that tell the stories
+												of history.</p>
+										</div>
+									</a>
+								</div>
+							</div>
+							<!-- Community Programs -->
+							<div class="item">
+								<div class="project-destination">
+									<a href="community.html" class="img" style="background-image: url(images/services-3.jpg);">
+										<div class="text">
+											<h3>Community Programs</h3>
+											<span>Giving Back</span>
+											<p>Engage with our initiatives to uplift communities and promote social harmony.
+											</p>
+										</div>
+									</a>
+								</div>
+							</div>
+							<!-- Education & Research -->
+							<div class="item">
+								<div class="project-destination">
+									<a href="explore.html" class="img" style="background-image: url(images/services-5.jpg);">
+										<div class="text">
+											<h3>Education & Research</h3>
+											<span>Learn & Explore</span>
+											<p>Expand your knowledge through curated research programs and educational tours.
+											</p>
+										</div>
+									</a>
+								</div>
+							</div>
+							<!-- Volunteer Opportunities -->
+							<div class="item">
+								<div class="project-destination">
+									<a href="donate.html" class="img" style="background-image: url(images/services-6.jpg);">
+										<div class="text">
+											<h3>Volunteer Opportunities</h3>
+											<span>Make a Difference</span>
+											<p>Join hands with us to make a positive impact through meaningful work and
+												service.</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center pb-4">
+					<div class="col-md-12 heading-section text-center ftco-animate">
+						<span class="subheading">Explore & Learn</span>
+						<h2 class="mb-4">Our Offerings</h2>
+						<p>From guided tours to enlightening research opportunities, discover what we have to offer.</p>
+					</div>
+				</div>
+				<div class="row">
+					<!-- Tour Packages -->
+					<div class="col-md-4 ftco-animate">
+						<div class="project-wrap">
+							<a href="tours.html" class="img" style="background-image: url(images/va2.jpg);">
+								<span class="price">$550/person</span>
+							</a>
+							<div class="text p-4">
+								<span class="days">Tour Packages</span>
+								<h3><a href="tours.html">Breathtaking Adventures</a></h3>
+								<p>
+									Embark on curated journeys through historic landmarks and serene natural settings. Perfect
+									for solo travelers, families, and groups.
+								</p>
+								<ul>
+									<li><span class="flaticon-shower"></span> Guided Exploration</li>
+									<li><span class="flaticon-king-size"></span> Custom Packages</li>
+									<li><span class="flaticon-sun-umbrella"></span> Relax & Discover</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- Research Areas -->
+					<div class="col-md-4 ftco-animate">
+						<div class="project-wrap">
+							<a href="research.html" class="img" style="background-image: url(images/va3.jpg);">
+								<span class="price">Explore Knowledge</span>
+							</a>
+							<div class="text p-4">
+								<span class="days">Research Opportunities</span>
+								<h3><a href="explore.html">Discover & Learn</a></h3>
+								<p>
+									Delve into the spiritual and historical significance of our heritage through research
+									programs designed for scholars and enthusiasts alike.
+								</p>
+								<ul>
+									<li><span class="flaticon-shower"></span> Historical Research</li>
+									<li><span class="flaticon-king-size"></span> Cultural Studies</li>
+									<li><span class="flaticon-historic"></span> Spiritual Exploration</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- Other Guidance -->
+					<div class="col-md-4 ftco-animate">
+						<div class="project-wrap">
+							<a href="community.html" class="img" style="background-image: url(images/va4.jpg);">
+								<span class="price">Community Programs</span>
+							</a>
+							<div class="text p-4">
+								<span class="days">Guidance & Support</span>
+								<h3><a href="community.html">Connecting Communities</a></h3>
+								<p>
+									Get involved in community activities, spiritual guidance programs, and volunteer
+									opportunities to grow and give back to society.
+								</p>
+								<ul>
+									<li><span class="flaticon-shower"></span> Community Outreach</li>
+									<li><span class="flaticon-king-size"></span> Volunteer Programs</li>
+									<li><span class="flaticon-map"></span> Spiritual Guidance</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-section ftco-about img"style="background-image: url(images/bg_4.jpg);">
+			<div class="overlay"></div>
+			<div class="container py-md-5">
+				<div class="row py-md-5">
+					<div class="col-md d-flex align-items-center justify-content-center">
+						<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+							<span class="fa fa-play"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-section ftco-about ftco-no-pt img">
+			<div class="container">
+				<div class="row d-flex">
+					<div class="col-md-12 about-intro">
+						<div class="row">
+							<!-- Image Section -->
+							<div class="col-md-6 d-flex align-items-stretch">
+								<div class="img d-flex w-100 align-items-center justify-content-center"
+									style="background-image:url(images/about-11.jpg);">
+								</div>
+							</div>
+							<!-- Content Section -->
+							<div class="col-md-6 pl-md-5 py-5">
+								<div class="row justify-content-start pb-3">
+									<div class="col-md-12 heading-section ftco-animate">
+										<span class="subheading">About Us</span>
+										<h2 class="mb-4">Preserving History, Inspiring Spiritual Journeys</h2>
+										<p>
+											The Khettarama Foundation is dedicated to preserving the spiritual and historical
+											essence of our heritage. From guided tours of historic landmarks to spiritual
+											retreats and research programs, we provide meaningful experiences to enrich your
+											soul and broaden your perspective.
+										</p>
+										<p>
+											Embark on a journey to connect with ancient wisdom, explore serene landscapes, and
+											immerse yourself in programs designed to inspire and enlighten.
+										</p>
+										<p><a href="about.html" class="btn btn-primary">Learn More About Us</a></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-section testimony-section bg-bottom" style="background-image: url(images/bg_1.jpg);">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row justify-content-center pb-4">
+					<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+						<span class="subheading">Testimonials</span>
+						<h2 class="mb-4">What Visitors Say About Us</h2>
+						<p class="mb-4">Heartfelt words from those who have embarked on a journey of discovery, peace, and
+							inspiration with us.</p>
+					</div>
+				</div>
+				<div class="row ftco-animate">
+					<div class="col-md-12">
+						<div class="carousel-testimony owl-carousel">
+							<div class="item">
+								<div class="testimony-wrap py-4">
+									<div class="text">
+										<p class="star">
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+										</p>
+										<p class="mb-4">
+											"The retreat was transformative. The serene environment and rich history offered a
+											unique blend of spirituality and learning. Highly recommended!"
+										</p>
+										<div class="d-flex align-items-center">
+											
+											<div class="pl-3">
+												<p class="name">Emily Carter</p>
+												<span class="position">Educator</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="testimony-wrap py-4">
+									<div class="text">
+										<p class="star">
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+										</p>
+										<p class="mb-4">
+											"The guided historical tour was captivating! The insights shared by the team
+											helped me appreciate the rich heritage of this place."
+										</p>
+										<div class="d-flex align-items-center">
+											
+											<div class="pl-3">
+												<p class="name">Michael Brown</p>
+												<span class="position">Historian</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="testimony-wrap py-4">
+									<div class="text">
+										<p class="star">
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+										</p>
+										<p class="mb-4">
+											"From meditation sessions to cultural tours, this foundation has created a perfect
+											escape for mind and soul. Truly unforgettable!"
+										</p>
+										<div class="d-flex align-items-center">
+											
+											<div class="pl-3">
+												<p class="name">Sophia Lee</p>
+												<span class="position">Yoga Practitioner</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="testimony-wrap py-4">
+									<div class="text">
+										<p class="star">
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+										</p>
+										<p class="mb-4">
+											"The spiritual retreats here are unparalleled. It's a place where history and
+											tranquility merge beautifully."
+										</p>
+										<div class="d-flex align-items-center">
+											
+											<div class="pl-3">
+												<p class="name">Liam Johnson</p>
+												<span class="position">Traveler</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="testimony-wrap py-4">
+									<div class="text">
+										<p class="star">
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+										</p>
+										<p class="mb-4">
+											"I discovered peace like never before here. The team is exceptional in curating
+											meaningful and impactful programs."
+										</p>
+										<div class="d-flex align-items-center">
+											
+											<div class="pl-3">
+												<p class="name">Isabella Smith</p>
+												<span class="position">Photographer</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center pb-4">
+					<div class="col-md-12 heading-section text-center ftco-animate">
+						<span class="subheading">Explore Researches</span>
+						<h2 class="mb-4">Delve into Ancient Discoveries</h2>
+						<p>Embark on a journey through time with our curated research topics on history, culture, and
+							mythology.</p>
+					</div>
+				</div>
+				<div class="row d-flex">
+					<!-- Ravana Research -->
+					<div class="col-md-4 d-flex ftco-animate">
+						<div class="blog-entry justify-content-end">
+							<a href="ravana-research.html" class="block-20"
+								style="background-image: url('images/ravana.jpg');">
+							</a>
+							<div class="text">
+								<h3 class="heading"><a href="ravana-research.html">The Legacy of Ravana</a></h3>
+								<p class="mb-4">Unravel the fascinating tales of King Ravana, a figure of both myth and
+									history, and his impact on Sri Lankan culture.</p>
+								<p><a href="explore.html" class="btn btn-primary">Learn More</a></p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Ahikuntika Research -->
+					<div class="col-md-4 d-flex ftco-animate">
+						<div class="blog-entry justify-content-end">
+							<a href="ahikuntika-research.html" class="block-20"
+								style="background-image: url('images/ahikuntika.jpg');">
+							</a>
+							<div class="text">
+								<h3 class="heading"><a href="ahikuntika-research.html">The Ahikuntika Chronicles</a></h3>
+								<p class="mb-4">Dive deep into the cultural roots and traditions of the Ahikuntika community,
+									exploring their influence on Sri Lanka.</p>
+								<p><a href="explore.html" class="btn btn-primary">Learn More</a></p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Historic Discoveries Research -->
+					<div class="col-md-4 d-flex ftco-animate">
+						<div class="blog-entry">
+							<a href="historic-discoveries.html" class="block-20"
+								style="background-image: url('images/historic.jpg');">
+							</a>
+							<div class="text">
+								<h3 class="heading"><a href="historic-discoveries.html">Unveiling Historic Discoveries</a>
+								</h3>
+								<p class="mb-4">Explore groundbreaking archaeological findings and historic landmarks that
+									shaped the narrative of Sri Lanka's past.</p>
+								<p><a href="explore.html" class="btn btn-primary">Learn More</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	<section class="ftco-intro ftco-section ftco-no-pt">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 text-center">
+					<div class="img" style="background-image: url(images/person_4.jpg);">
+						<div class="overlay"></div>
+						<h2>Join Us on a Journey of Discovery and Enlightenment</h2>
+						<p>Uncover ancient wisdom, spiritual serenity, and awe-inspiring destinations with the Khettarama
+							Foundation. Let us guide you to experiences that transform the mind, body, and soul.</p>
+						<p class="mb-0">
+							<a href="donate.html" class="btn btn-primary px-4 py-3">Support Our Mission</a>
+							<a href="contact.html" class="btn btn-primary px-4 py-3">Contact Us</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+		<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(images/bg_3.jpg);">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-md pt-5">
+						<div class="ftco-footer-widget pt-md-5 mb-4">
+							<h2 class="ftco-heading-2">About Us</h2>
+							<p>Dedicated to preserving spirituality, exploring history, and inspiring a sense of peace, the
+								Khettarama Foundation invites you to embark on a journey of enlightenment and cultural
+								discovery.</p>
+							<ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+								<li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+								<li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+								<li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md pt-5 border-left">
+						<div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+							<h2 class="ftco-heading-2">Quick Links</h2>
+							<ul class="list-unstyled">
+								<li><a href="about.html" class="py-2 d-block">About Us</a></li>
+								<li><a href="explore.html" class="py-2 d-block">Explore & Research</a></li>
+								<li><a href="meditation.html" class="py-2 d-block">Meditation & Retreats</a></li>
+								<li><a href="community.html" class="py-2 d-block">Community Programs</a></li>
+								<li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md pt-5 border-left">
+						<div class="ftco-footer-widget pt-md-5 mb-4">
+							<h2 class="ftco-heading-2">Contact Us</h2>
+							<div class="block-23 mb-3">
+								<ul>
+									<li><span class="icon fa fa-map-marker"></span><span class="text">SRI SUMANGALA PIREVAN
+											SCHOOL, Kovana, Hindagolla, Kurunegala, Sri Lanka</span></li>
+									<li><a href="tel:+94702278344"><span class="icon fa fa-phone"></span><span
+												class="text">+94 702 278 344</span></a></li>
+									<li><a href="tel:+94372236034"><span class="icon fa fa-phone"></span><span
+												class="text">+94 372 236 034</span></a></li>
+									<li><a href="tel:+94713000357"><span class="icon fa fa-phone"></span><span
+												class="text">+94 713 000 357</span></a></li>
+									<li><a href="mailto:revkowanepalithathero@gmail.com"><span
+												class="icon fa fa-paper-plane"></span><span
+												class="text">revkowanepalithathero@gmail.com</span></a></li>
+									<li><a href="mailto:damma1984@gmail.com"><span class="icon fa fa-paper-plane"></span><span
+												class="text">damma1984@gmail.com</span></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p>
+							Copyright &copy;<script>
+								document.write(new Date().getFullYear());
+							</script> All rights reserved | Built with <i class="fa fa-heart" aria-hidden="true"></i> by
+							Khettarama Foundation.
+						</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
+			<!-- loader -->
+			<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+			<script src="js/jquery.min.js"></script>
+			<script src="js/jquery-migrate-3.0.1.min.js"></script>
+			<script src="js/popper.min.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/jquery.easing.1.3.js"></script>
+			<script src="js/jquery.waypoints.min.js"></script>
+			<script src="js/jquery.stellar.min.js"></script>
+			<script src="js/owl.carousel.min.js"></script>
+			<script src="js/jquery.magnific-popup.min.js"></script>
+			<script src="js/jquery.animateNumber.min.js"></script>
+			<script src="js/bootstrap-datepicker.js"></script>
+			<script src="js/scrollax.min.js"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+			<script src="js/google-map.js"></script>
+			<script src="js/main.js"></script>
+			
+		</body>
+		</html>

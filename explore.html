@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Khettarama </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+      /* Hover popup styling */
+      .project-wrap {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .popup-description {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 15px;
+        text-align: center;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .project-wrap:hover .popup-description {
+        display: block;
+        opacity: 1;
+      }
+
+      .popup-description h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+
+      .popup-description p {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .popup-description .btn {
+        margin-top: 15px;
+        background: #ff5a5f;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .popup-description .btn:hover {
+        background: #e94e54;
+      }
+    </style>
+
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+   <div class="container">
+     <a class="navbar-brand" href="index.html">Khettarama <span>Foundation</span></a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="oi oi-menu"></span> Menu
+   </button>
+
+   <div class="collapse navbar-collapse" id="ftco-nav">
+       <ul class="navbar-nav ml-auto">
+         <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+         <li class="nav-item"><a href="tours.html" class="nav-link">Historic Tours</a></li>
+         <li class="nav-item"><a href="explore.html" class="nav-link">Explore & Research</a></li>
+         <li class="nav-item"><a href="meditation.html" class="nav-link">Meditation & Retreats</a></li>
+         <li class="nav-item"><a href="community.html" class="nav-link">Community Programs</a></li>
+         <li class="nav-item"><a href="donate.html" class="nav-link">Donate & Support</a></li>
+         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+     </ul>
+ </div>
+</div>
+</nav>
+<!-- END nav -->
+
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_b.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+      <div class="col-md-9 ftco-animate pb-5 text-center">
+         <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
+                 class="fa fa-chevron-right"></i></a></span> <span>Explore & Research <i
+               class="fa fa-chevron-right"></i></span></p>
+         <h1 class="mb-0 bread">Explore & Research</h1>
+     </div>
+ </div>
+</div>
+</section>
+
+<!-- Filter Bar -->
+<div class="filter-bar d-flex align-items-center justify-content-between p-3 bg-light rounded">
+  <form id="filterForm" class="d-flex w-100 align-items-center">
+    <!-- Search Bar -->
+    <div class="form-group mb-0 mr-2 w-50">
+      <label for="searchPackage" class="sr-only">Search</label>
+      <input type="text" id="searchPackage" class="form-control" placeholder="Search by package name or location"
+        onkeyup="filterPackages()">
+    </div>
+    <!-- Dropdown for Research -->
+    <div class="form-group mb-0 mr-2">
+      <label for="researchDropdown" class="mr-2">Select Research:</label>
+      <select id="researchDropdown" class="form-control" onchange="filterPackages()">
+        <option value="all">All</option>
+        <!-- Options will be dynamically populated -->
+      </select>
+    </div>
+    <!-- Price Range Filter -->
+    <div class="form-group mb-0 mr-2">
+      <label for="priceRange" class="mr-2">Price Range:</label>
+      <select id="priceRange" class="form-control" onchange="filterPackages()">
+        <option value="all">All</option>
+        <option value="100-200">$100 - $200</option>
+        <option value="200-300">$200 - $300</option>
+        <option value="300-400">$300 - $400</option>
+        <option value="400-500">$400 - $500</option>
+      </select>
+    </div>
+    <!-- Price Slider -->
+    <div class="form-group mb-0 mr-2">
+      <label for="priceSlider" class="mr-2">Price Slider:</label>
+      <input type="range" id="priceSlider" min="100" max="1000" step="50" value="1000"
+        oninput="updateSliderValue(this.value); filterPackages()">
+      <span id="sliderValue">Up to $1000</span>
+    </div>
+    <!-- Submit Button -->
+    <button type="button" class="btn btn-primary ml-2" onclick="filterPackages()">Filter</button>
+  </form>
+</div>
+
+<script>
+ 
+    // Populate dropdown with package names dynamically
+    document.addEventListener("DOMContentLoaded", () => {
+      const researchDropdown = document.getElementById("researchDropdown");
+      const packages = document.querySelectorAll(".project-wrap");
+
+      packages.forEach((packageElement) => {
+        const packageName = packageElement.querySelector("h3 a").textContent.trim();
+        const option = document.createElement("option");
+        option.value = packageName.toLowerCase(); // Use lowercase for consistency
+        option.textContent = packageName;
+        researchDropdown.appendChild(option);
+      });
+    });
+
+    function filterPackages() {
+      const searchInput = document.getElementById("searchPackage").value.toLowerCase();
+      const selectedResearch = document.getElementById("researchDropdown").value.toLowerCase();
+      const selectedRange = document.getElementById("priceRange").value;
+      const sliderValue = parseInt(document.getElementById("priceSlider").value, 10);
+      const packages = document.querySelectorAll(".project-wrap");
+
+      packages.forEach((packageElement) => {
+        const packageName = packageElement.querySelector("h3 a").textContent.toLowerCase();
+        const packageLocation = packageElement.querySelector(".location").textContent.toLowerCase();
+        const packagePrice = parseInt(
+          packageElement.querySelector(".price").textContent.replace("$", "").replace("/person", "").trim(),
+          10
+        );
+
+        // Parse price range into min and max
+        let matchesPriceRange = true;
+        if (selectedRange !== "all") {
+          const [minPrice, maxPrice] = selectedRange.split("-").map(Number);
+          matchesPriceRange = packagePrice >= minPrice && packagePrice <= maxPrice;
+        }
+
+        // Check if slider value is also satisfied
+        const matchesSlider = packagePrice <= sliderValue;
+
+        // Check search term against name and location
+        const matchesSearch = packageName.includes(searchInput) || packageLocation.includes(searchInput);
+
+        // Check selected research filter
+        const matchesResearch = selectedResearch === "all" || packageName === selectedResearch;
+
+        // Show or hide packages based on all conditions
+        if (matchesSearch && matchesPriceRange && matchesSlider && matchesResearch) {
+          packageElement.parentElement.style.display = "block";
+        } else {
+          packageElement.parentElement.style.display = "none";
+        }
+      });
+    }
+
+    function updateSliderValue(value) {
+      document.getElementById("sliderValue").textContent = `Up to $${value}`;
+    }
+ 
+
+</script>
+
+<style>
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  .filter-bar .form-group {
+    margin-bottom: 0;
+    flex-grow: 1;
+  }
+
+  .filter-bar .form-group input,
+  .filter-bar .form-group select {
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .filter-bar .form-group label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 10px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .filter-bar .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: #ff5a5f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .filter-bar .btn:hover {
+    background-color: #e94e54;
+  }
+
+  @media (max-width: 768px) {
+    .filter-bar {
+      flex-wrap: wrap;
+    }
+
+    .filter-bar .form-group,
+    .filter-bar .btn {
+      flex: 1 1 100%;
+      margin-bottom: 10px;
+    }
+  }
+</style>
+<style>
+  /* Project card styling */
+  .project-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: #fff;
+  }
+
+  .project-wrap:hover {
+    transform: translateY(-5px);
+  }
+
+  .project-wrap .img {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .project-wrap .text {
+    padding: 20px;
+    background: #fff;
+  }
+
+  .project-wrap .text h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .project-wrap .text p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .project-wrap .price {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #28a745;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  /* Popup styling */
+  .popup-description {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .project-wrap:hover .popup-description {
+    display: block;
+    opacity: 1;
+  }
+
+  .popup-description h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  .popup-description p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .popup-description .btn {
+    margin-top: 15px;
+    background: #4E8134;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .popup-description .btn:hover {
+    background: #2d6622;
+  }
+
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .project-wrap .img {
+      height: 200px;
+    }
+
+    .project-wrap .text {
+      padding: 15px;
+    }
+
+    .project-wrap .text h3 {
+      font-size: 16px;
+    }
+
+    .project-wrap .text p {
+      font-size: 12px;
+    }
+
+    .popup-description {
+      font-size: 14px;
+      padding: 15px;
+    }
+
+    .popup-description h3 {
+      font-size: 18px;
+    }
+
+    .popup-description p {
+      font-size: 12px;
+    }
+
+    .popup-description .btn {
+      font-size: 12px;
+      padding: 8px 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .project-wrap .img {
+      height: 150px;
+    }
+
+    .project-wrap .text h3 {
+      font-size: 14px;
+    }
+
+    .popup-description {
+      font-size: 12px;
+    }
+
+    .popup-description h3 {
+      font-size: 16px;
+    }
+
+    .popup-description .btn {
+      font-size: 10px;
+      padding: 6px 10px;
+    }
+  }
+</style>
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row">
+      <!-- Popup Content Added for Each Package -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/ravana-legacy.jpg);">
+            <span class="price">$250/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">2 Days Tour</span>
+            <h3><a href="#">Exploring Ravana’s Legacy</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Sigiriya & Dambulla</p>
+            <ul>
+              <li><span class="flaticon-historic"></span> Mythical Stories</li>
+              <li><span class="flaticon-mountain"></span> Sigiriya Rock</li>
+              <li><span class="flaticon-ancient"></span> Ancient Artifacts</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Exploring Ravana’s Legacy</h3>
+            <p>Discover the mythical tales of King Ravana, explore the Sigiriya rock fortress, and uncover ancient
+              artifacts in Dambulla. This tour is perfect for history enthusiasts and explorers seeking adventure.</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Exploring Ravana’s Legacy')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/pushpaka-vimana.jpg);">
+            <span class="price">$300/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Pushpaka Vimana and Ancient Technologies</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Mythical Sites</p>
+            <ul>
+              <li><span class="flaticon-technology"></span> Ancient Aerodynamics</li>
+              <li><span class="flaticon-history"></span> Ravana Legends</li>
+              <li><span class="flaticon-culture"></span> Mythical Exploration</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Pushpaka Vimana and Ancient Technologies</h3>
+            <p>Dive into the advanced technologies described in ancient texts, including the Pushpaka Vimana. This tour
+              combines history, culture, and the exploration of mythical engineering marvels.</p>
+            <button class="btn connect-btn"
+              onclick="connectToWhatsApp('Pushpaka Vimana and Ancient Technologies')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/sigiriya-architecture.jpg);">
+            <span class="price">$200/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">2 Days Tour</span>
+            <h3><a href="#">Sigiriya and Architecture</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Sigiriya</p>
+            <ul>
+              <li><span class="flaticon-rock"></span> Ancient Rock Fortress</li>
+              <li><span class="flaticon-historic"></span> Cultural Insights</li>
+              <li><span class="flaticon-art"></span> Architectural Wonders</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Sigiriya and Architecture</h3>
+            <p>Unveil the secrets of Sigiriya's breathtaking architecture, its historical significance, and the artistic
+              genius behind its construction. A perfect tour for art and history lovers.</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Sigiriya and Architecture')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/ramayana-trail.jpg);">
+            <span class="price">$350/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Mythical Ramayana Trail</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Nationwide</p>
+            <ul>
+              <li><span class="flaticon-historic"></span> Ramayana Sites</li>
+              <li><span class="flaticon-temple"></span> Sacred Temples</li>
+              <li><span class="flaticon-history"></span> Mythical Exploration</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Mythical Ramayana Trail</h3>
+            <p>Follow the epic journey of Ramayana across Sri Lanka, visiting sacred temples, mythical locations, and
+              culturally rich heritage sites.</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Mythical Ramayana Trail')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat similar structure for all packages with unique popup descriptions -->
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/ayurveda-tour.jpg);">
+            <span class="price">$700/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">5 Days Tour</span>
+            <h3><a href="#">Ravana’s Ayurveda</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Nationwide</p>
+            <ul>
+              <li><span class="flaticon-herbal"></span> Ayurvedic Healing</li>
+              <li><span class="flaticon-forest"></span> Herbal Trails</li>
+              <li><span class="flaticon-healthcare"></span> Wellness Programs</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Ravana’s Ayurveda</h3>
+            <p>Explore Sri Lanka’s ancient healing techniques, focusing on Ayurvedic practices pioneered by King Ravana.
+              Visit herbal gardens and participate in wellness sessions.</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Ravana’s Ayurveda')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/hidden-tunnels.jpg);">
+            <span class="price">$450/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Hidden Tunnels</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Sigiriya</p>
+            <ul>
+              <li><span class="flaticon-cave"></span> Underground Secrets</li>
+              <li><span class="flaticon-mountain"></span> Historical Findings</li>
+              <li><span class="flaticon-ancient"></span> Legendary Paths</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Hidden Tunnels</h3>
+            <p>Embark on an adventure through the hidden tunnels of Sigiriya. Discover ancient engineering marvels and
+              stories of secrecy and survival.</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Hidden Tunnels')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/ahikuntika-tour.jpg);">
+            <span class="price">$300/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">2 Days Tour</span>
+            <h3><a href="#">Ahikuntika People</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Nomadic Villages</p>
+            <ul>
+              <li><span class="flaticon-community"></span> Nomadic Lifestyle</li>
+              <li><span class="flaticon-culture"></span> Cultural Identity</li>
+              <li><span class="flaticon-heritage"></span> Challenges</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Ahikuntika People</h3>
+            <p>Step into the lives of the Ahikuntika nomadic communities. Learn about their unique traditions,
+              challenges, and cultural contributions.</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Ahikuntika People')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/vedda-tour.jpg);">
+            <span class="price">$400/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Vedda Tribe: Heritage & Challenges</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Dambana</p>
+            <ul>
+              <li><span class="flaticon-culture"></span> Traditional Beliefs</li>
+              <li><span class="flaticon-forest"></span> Jungle Life</li>
+              <li><span class="flaticon-adventure"></span> Cultural Walks</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Vedda Tribe: Heritage & Challenges</h3>
+            <p>Discover the culture and heritage of the Vedda people, Sri Lanka’s indigenous community. Participate in
+              their daily activities and learn about their conservation challenges.</p>
+            <button class="btn connect-btn"
+              onclick="connectToWhatsApp('Vedda Tribe: Heritage & Challenges')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/rodiya-tour.jpg);">
+            <span class="price">$500/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">4 Days Tour</span>
+            <h3><a href="#">Rodiyas: Social Adaptation</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Villages</p>
+            <ul>
+              <li><span class="flaticon-culture"></span> Social History</li>
+              <li><span class="flaticon-community"></span> Local Stories</li>
+              <li><span class="flaticon-integration"></span> Adaptation</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Rodiyas: Social Adaptation</h3>
+            <p>Explore the social history and adaptations of the Rodiyas community. Engage with locals and learn about
+              their cultural evolution and resilience.</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Rodiyas: Social Adaptation')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat this structure for the remaining packages with tailored popup content -->
+
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/afro-sri-lankan.jpg);">
+            <span class="price">$500/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Afro-Sri Lankans: Music and Identity</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Puttalam</p>
+            <ul>
+              <li><span class="flaticon-music"></span>Music and Dance</li>
+              <li><span class="flaticon-culture"></span>Cultural Identity</li>
+              <li><span class="flaticon-heritage"></span>Heritage Exploration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/afro-sri-lankan.jpg);">
+            <span class="price">$500/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Afro-Sri Lankans: Music and Identity</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Puttalam</p>
+            <ul>
+              <li><span class="flaticon-music"></span> Music and Dance</li>
+              <li><span class="flaticon-culture"></span> Cultural Identity</li>
+              <li><span class="flaticon-heritage"></span> Heritage Exploration</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Afro-Sri Lankans: Music and Identity</h3>
+            <p>Immerse yourself in the vibrant culture of Afro-Sri Lankans, exploring their music, dance, and historical
+              roots in the Puttalam region.</p>
+            <button class="btn connect-btn"
+              onclick="connectToWhatsApp('Afro-Sri Lankans: Music and Identity')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/fishing-community.jpg);">
+            <span class="price">$350/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">2 Days Tour</span>
+            <h3><a href="#">Fishing Communities: Sustainability and Climate Impact</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Coastal Regions</p>
+            <ul>
+              <li><span class="flaticon-fishing"></span> Fishing Practices</li>
+              <li><span class="flaticon-environment"></span> Climate Challenges</li>
+              <li><span class="flaticon-sustainability"></span> Sustainable Practices</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Fishing Communities: Sustainability and Climate Impact</h3>
+            <p>Discover the life of fishing communities and their resilience in the face of climate change. Learn about
+              sustainable practices and their cultural significance.</p>
+            <button class="btn connect-btn"
+              onclick="connectToWhatsApp('Fishing Communities: Sustainability and Climate Impact')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/plantation-workers.jpg);">
+            <span class="price">$400/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Plantation Workers: Legacy and Conditions</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Hill Country</p>
+            <ul>
+              <li><span class="flaticon-tea"></span> Tea Plantations</li>
+              <li><span class="flaticon-culture"></span> Worker Stories</li>
+              <li><span class="flaticon-history"></span> Historical Legacy</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Plantation Workers: Legacy and Conditions</h3>
+            <p>Visit the lush tea plantations of Sri Lanka and explore the stories of plantation workers who have shaped
+              the nation's tea industry.</p>
+            <button class="btn connect-btn"
+              onclick="connectToWhatsApp('Plantation Workers: Legacy and Conditions')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/burgher-community.jpg);">
+            <span class="price">$500/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Burgher Community: Dutch-Portuguese Influences</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Coastal Cities</p>
+            <ul>
+              <li><span class="flaticon-architecture"></span> Architectural Heritage</li>
+              <li><span class="flaticon-food"></span> Unique Cuisine</li>
+              <li><span class="flaticon-culture"></span> Cultural Influence</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Burgher Community: Dutch-Portuguese Influences</h3>
+            <p>Explore the rich architectural and cultural legacy of the Burgher community, influenced by Dutch and
+              Portuguese settlers.</p>
+            <button class="btn connect-btn"
+              onclick="connectToWhatsApp('Burgher Community: Dutch-Portuguese Influences')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/kandyan-traditions.jpg);">
+            <span class="price">$450/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">4 Days Tour</span>
+            <h3><a href="#">Kandyan Traditions</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Kandy</p>
+            <ul>
+              <li><span class="flaticon-dance"></span> Traditional Dance</li>
+              <li><span class="flaticon-festival"></span> Cultural Festivals</li>
+              <li><span class="flaticon-temple"></span> Sacred Sites</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Kandyan Traditions</h3>
+            <p>Dive into the heart of Kandy and experience its rich traditions, including cultural festivals, sacred
+              sites, and vibrant dances.</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Kandyan Traditions')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/tamil-contributions.jpg);">
+            <span class="price">$400/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Tamil Contributions</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Northern Province</p>
+            <ul>
+              <li><span class="flaticon-heritage"></span> Historical Influence</li>
+              <li><span class="flaticon-culture"></span> Art and Music</li>
+              <li><span class="flaticon-temple"></span> Sacred Architecture</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Tamil Contributions</h3>
+            <p>Explore the rich contributions of the Tamil community, from their historical influence to their vibrant
+              art, music, and sacred architecture.</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Tamil Contributions')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/yaksha-naga-tribes.jpg);">
+            <span class="price">$450/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Yaksha and Naga Tribes</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Anuradhapura</p>
+            <ul>
+              <li><span class="flaticon-forest"></span> Ancient Practices</li>
+              <li><span class="flaticon-historic"></span> Tribal Legends</li>
+              <li><span class="flaticon-nature"></span> Ritual Sites</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Yaksha and Naga Tribes</h3>
+            <p>Journey into the history of the Yaksha and Naga tribes, uncovering their ancient practices, tribal
+              legends, and sacred ritual sites.</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Yaksha and Naga Tribes')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/folk-traditions.jpg);">
+            <span class="price">$300/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">2 Days Tour</span>
+            <h3><a href="#">Folk Traditions: Dance and Music</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Rural Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-drum"></span> Traditional Music</li>
+              <li><span class="flaticon-dance"></span> Folk Dances</li>
+              <li><span class="flaticon-art"></span> Cultural Preservation</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Folk Traditions: Dance and Music</h3>
+            <p>Experience the vibrant folk traditions of rural Sri Lanka, showcasing traditional music, dances, and
+              efforts in cultural preservation.</p>
+            <button class="btn connect-btn"
+              onclick="connectToWhatsApp('Folk Traditions: Dance and Music')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/ancient-cities.jpg);">
+            <span class="price">$400/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Ancient Cities</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Anuradhapura, Polonnaruwa, Sigiriya</p>
+            <ul>
+              <li><span class="flaticon-temple"></span> Historical Landmarks</li>
+              <li><span class="flaticon-culture"></span> Cultural Heritage</li>
+              <li><span class="flaticon-historic"></span> UNESCO Sites</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Ancient Cities</h3>
+            <p>Explore the iconic ancient cities of Sri Lanka, including Anuradhapura, Polonnaruwa, and Sigiriya, and
+              immerse yourself in their cultural heritage and UNESCO landmarks.</p>
+            <button class="btn connect-btn" onclick="connectToWhatsApp('Ancient Cities')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/megalithic-structures.jpg);">
+            <span class="price">$450/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">4 Days Tour</span>
+            <h3><a href="#">Megalithic Structures and Irrigation</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Cultural Triangle</p>
+            <ul>
+              <li><span class="flaticon-historic"></span> Ancient Engineering</li>
+              <li><span class="flaticon-nature"></span> Irrigation Systems</li>
+              <li><span class="flaticon-heritage"></span> Archaeological Sites</li>
+            </ul>
+          </div>
+          <!-- Popup Description -->
+          <div class="popup-description">
+            <h3>Megalithic Structures and Irrigation</h3>
+            <p>Discover the impressive engineering feats of Sri Lanka's ancient civilizations through megalithic
+              structures and advanced irrigation systems in the Cultural Triangle.</p>
+            <button class="btn connect-btn"
+              onclick="connectToWhatsApp('Megalithic Structures and Irrigation')">Connect</button>
+          </div>
+        </div>
+      </div>
+
+
+            <div class="col-md-4 ftco-animate">
+              <div class="project-wrap">
+                <a href="#" class="img" style="background-image: url(images/maritime-archaeology.jpg);">
+                  <span class="price">$500/person</span>
+                </a>
+                <div class="text p-4">
+                  <span class="days">3 Days Tour</span>
+                  <h3><a href="#">Maritime Archaeology</a></h3>
+                  <p class="location"><span class="fa fa-map-marker"></span> Coastal Sri Lanka</p>
+                  <ul>
+                    <li><span class="flaticon-ship"></span> Shipwreck Exploration</li>
+                    <li><span class="flaticon-history"></span> Ancient Ports</li>
+                    <li><span class="flaticon-diving"></span> Underwater Archaeology</li>
+                  </ul>
+                </div>
+                <!-- Popup Description -->
+                <div class="popup-description">
+                  <h3>Maritime Archaeology</h3>
+                  <p>Delve into Sri Lanka's maritime history by exploring ancient ports, shipwrecks, and underwater
+                    archaeological sites along the scenic coastline.</p>
+                  <button class="btn connect-btn" onclick="connectToWhatsApp('Maritime Archaeology')">Connect</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 ftco-animate">
+              <div class="project-wrap">
+                <a href="#" class="img" style="background-image: url(images/trade-networks.jpg);">
+                  <span class="price">$350/person</span>
+                </a>
+                <div class="text p-4">
+                  <span class="days">2 Days Tour</span>
+                  <h3><a href="#">South Asian Trade Networks</a></h3>
+                  <p class="location"><span class="fa fa-map-marker"></span> Nationwide</p>
+                  <ul>
+                    <li><span class="flaticon-trade"></span> Trade Routes</li>
+                    <li><span class="flaticon-heritage"></span> Historical Insights</li>
+                    <li><span class="flaticon-global"></span> Cross-Cultural Exchange</li>
+                  </ul>
+                </div>
+                <!-- Popup Description -->
+                <div class="popup-description">
+                  <h3>South Asian Trade Networks</h3>
+                  <p>Follow the ancient trade routes of South Asia and uncover the rich history of cross-cultural
+                    exchange and commerce that shaped the region.</p>
+                  <button class="btn connect-btn"
+                    onclick="connectToWhatsApp('South Asian Trade Networks')">Connect</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 ftco-animate">
+              <div class="project-wrap">
+                <a href="#" class="img" style="background-image: url(images/sinharaja-forest.jpg);">
+                  <span class="price">$300/person</span>
+                </a>
+                <div class="text p-4">
+                  <span class="days">2 Days Tour</span>
+                  <h3><a href="#">Biodiversity in Sinharaja Forest</a></h3>
+                  <p class="location"><span class="fa fa-map-marker"></span> Sinharaja</p>
+                  <ul>
+                    <li><span class="flaticon-nature"></span> Rainforest Exploration</li>
+                    <li><span class="flaticon-flora"></span> Unique Flora</li>
+                    <li><span class="flaticon-fauna"></span> Rare Fauna</li>
+                  </ul>
+                </div>
+                <!-- Popup Description -->
+                <div class="popup-description">
+                  <h3>Biodiversity in Sinharaja Forest</h3>
+                  <p>Immerse yourself in the lush greenery of the Sinharaja Forest Reserve, discovering rare species of
+                    flora and fauna in this UNESCO World Heritage Site.</p>
+                  <button class="btn connect-btn"
+                    onclick="connectToWhatsApp('Biodiversity in Sinharaja Forest')">Connect</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 ftco-animate">
+              <div class="project-wrap">
+                <a href="#" class="img" style="background-image: url(images/elephant-gatherings.jpg);">
+                  <span class="price">$400/person</span>
+                </a>
+                <div class="text p-4">
+                  <span class="days">3 Days Tour</span>
+                  <h3><a href="#">Elephant Gatherings</a></h3>
+                  <p class="location"><span class="fa fa-map-marker"></span> Minneriya</p>
+                  <ul>
+                    <li><span class="flaticon-elephant"></span> Wildlife Viewing</li>
+                    <li><span class="flaticon-nature"></span> National Parks</li>
+                    <li><span class="flaticon-conservation"></span> Conservation Insights</li>
+                  </ul>
+                </div>
+                <!-- Popup Description -->
+                <div class="popup-description">
+                  <h3>Elephant Gatherings</h3>
+                  <p>Witness one of the largest gatherings of wild elephants in the world at Minneriya National Park, a
+                    breathtaking experience in wildlife observation.</p>
+                  <button class="btn connect-btn" onclick="connectToWhatsApp('Elephant Gatherings')">Connect</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 ftco-animate">
+              <div class="project-wrap">
+                <a href="#" class="img" style="background-image: url(images/marine-life.jpg);">
+                  <span class="price">$450/person</span>
+                </a>
+                <div class="text p-4">
+                  <span class="days">4 Days Tour</span>
+                  <h3><a href="#">Marine Life Exploration</a></h3>
+                  <p class="location"><span class="fa fa-map-marker"></span> Mirissa, Hikkaduwa</p>
+                  <ul>
+                    <li><span class="flaticon-fish"></span> Whale Watching</li>
+                    <li><span class="flaticon-dive"></span> Snorkeling</li>
+                    <li><span class="flaticon-ecosystem"></span> Marine Ecosystems</li>
+                  </ul>
+                </div>
+                <!-- Popup Description -->
+                <div class="popup-description">
+                  <h3>Marine Life Exploration</h3>
+                  <p>Embark on a journey to explore Sri Lanka's stunning marine ecosystems, featuring whale watching,
+                    snorkeling, and vibrant underwater life.</p>
+                  <button class="btn connect-btn"
+                    onclick="connectToWhatsApp('Marine Life Exploration')">Connect</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 ftco-animate">
+              <div class="project-wrap">
+                <a href="#" class="img" style="background-image: url(images/national-parks.jpg);">
+                  <span class="price">$300/person</span>
+                </a>
+                <div class="text p-4">
+                  <span class="days">2 Days Tour</span>
+                  <h3><a href="#">National Parks and Bird Sanctuaries</a></h3>
+                  <p class="location"><span class="fa fa-map-marker"></span> Yala, Kumana</p>
+                  <ul>
+                    <li><span class="flaticon-bird"></span> Bird Watching</li>
+                    <li><span class="flaticon-nature"></span> Wildlife Exploration</li>
+                    <li><span class="flaticon-forest"></span> Natural Habitats</li>
+                  </ul>
+                </div>
+                <!-- Popup Description -->
+                <div class="popup-description">
+                  <h3>National Parks and Bird Sanctuaries</h3>
+                  <p>Explore the biodiversity of Yala and Kumana National Parks, where diverse bird species and vibrant
+                    wildlife thrive in their natural habitats.</p>
+                  <button class="btn connect-btn"
+                    onclick="connectToWhatsApp('National Parks and Bird Sanctuaries')">Connect</button>
+                </div>
+              </div>
+            </div>
+
+
+
+               <div class="col-md-4 ftco-animate">
+                 <div class="project-wrap">
+                   <a href="#" class="img" style="background-image: url(images/adventure-tourism.jpg);">
+                     <span class="price">$400/person</span>
+                   </a>
+                   <div class="text p-4">
+                     <span class="days">3 Days Tour</span>
+                     <h3><a href="#">Adventure Tourism</a></h3>
+                     <p class="location"><span class="fa fa-map-marker"></span> Hill Country</p>
+                     <ul>
+                       <li><span class="flaticon-hiking"></span> Hiking Trails</li>
+                       <li><span class="flaticon-water-sport"></span> Water Sports</li>
+                       <li><span class="flaticon-nature"></span> Outdoor Adventures</li>
+                     </ul>
+                   </div>
+                   <!-- Popup Description -->
+                   <div class="popup-description">
+                     <h3>Adventure Tourism</h3>
+                     <p>Embark on thrilling adventures in Sri Lanka's hill country with hiking trails, water sports, and
+                       breathtaking outdoor activities.</p>
+                     <button class="btn connect-btn" onclick="connectToWhatsApp('Adventure Tourism')">Connect</button>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="col-md-4 ftco-animate">
+                 <div class="project-wrap">
+                   <a href="#" class="img" style="background-image: url(images/ecotourism.jpg);">
+                     <span class="price">$500/person</span>
+                   </a>
+                   <div class="text p-4">
+                     <span class="days">4 Days Tour</span>
+                     <h3><a href="#">Ecotourism in Hill Country and Coasts</a></h3>
+                     <p class="location"><span class="fa fa-map-marker"></span> Nationwide</p>
+                     <ul>
+                       <li><span class="flaticon-forest"></span> Nature Walks</li>
+                       <li><span class="flaticon-sustainability"></span> Sustainable Travel</li>
+                       <li><span class="flaticon-nature"></span> Scenic Landscapes</li>
+                     </ul>
+                   </div>
+                   <!-- Popup Description -->
+                   <div class="popup-description">
+                     <h3>Ecotourism in Hill Country and Coasts</h3>
+                     <p>Experience the serene beauty of Sri Lanka's hill country and coastal regions through
+                       eco-friendly travel and nature walks.</p>
+                     <button class="btn connect-btn"
+                       onclick="connectToWhatsApp('Ecotourism in Hill Country and Coasts')">Connect</button>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="col-md-4 ftco-animate">
+                 <div class="project-wrap">
+                   <a href="#" class="img" style="background-image: url(images/siddha-practices.jpg);">
+                     <span class="price">$700/person</span>
+                   </a>
+                   <div class="text p-4">
+                     <span class="days">7 Days Tour</span>
+                     <h3><a href="#">Siddha Practices and Healthcare</a></h3>
+                     <p class="location"><span class="fa fa-map-marker"></span> Nationwide</p>
+                     <ul>
+                       <li><span class="flaticon-healthcare"></span> Traditional Healing</li>
+                       <li><span class="flaticon-herbal"></span> Natural Medicine</li>
+                       <li><span class="flaticon-forest"></span> Plant-Based Therapies</li>
+                     </ul>
+                   </div>
+                   <!-- Popup Description -->
+                   <div class="popup-description">
+                     <h3>Siddha Practices and Healthcare</h3>
+                     <p>Discover ancient Siddha medical practices that focus on natural healing and holistic health in
+                       tranquil settings.</p>
+                     <button class="btn connect-btn"
+                       onclick="connectToWhatsApp('Siddha Practices and Healthcare')">Connect</button>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="col-md-4 ftco-animate">
+                 <div class="project-wrap">
+                   <a href="#" class="img" style="background-image: url(images/esala-perahera.jpg);">
+                     <span class="price">$450/person</span>
+                   </a>
+                   <div class="text p-4">
+                     <span class="days">3 Days Tour</span>
+                     <h3><a href="#">Esala Perahera</a></h3>
+                     <p class="location"><span class="fa fa-map-marker"></span> Kandy</p>
+                     <ul>
+                       <li><span class="flaticon-festival"></span> Cultural Performances</li>
+                       <li><span class="flaticon-drum"></span> Traditional Music</li>
+                       <li><span class="flaticon-culture"></span> Temple Processions</li>
+                     </ul>
+                   </div>
+                   <!-- Popup Description -->
+                   <div class="popup-description">
+                     <h3>Esala Perahera</h3>
+                     <p>Witness the grandeur of the Esala Perahera festival in Kandy, with its vibrant processions,
+                       traditional music, and cultural performances.</p>
+                     <button class="btn connect-btn" onclick="connectToWhatsApp('Esala Perahera')">Connect</button>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="col-md-4 ftco-animate">
+                 <div class="project-wrap">
+                   <a href="#" class="img" style="background-image: url(images/climate-change.jpg);">
+                     <span class="price">$400/person</span>
+                   </a>
+                   <div class="text p-4">
+                     <span class="days">3 Days Tour</span>
+                     <h3><a href="#">Effect of Climate Change</a></h3>
+                     <p class="location"><span class="fa fa-map-marker"></span> Coastal and Inland</p>
+                     <ul>
+                       <li><span class="flaticon-environment"></span> Community Impacts</li>
+                       <li><span class="flaticon-ecosystem"></span> Wildlife Effects</li>
+                       <li><span class="flaticon-nature"></span> Preservation Efforts</li>
+                     </ul>
+                   </div>
+                   <!-- Popup Description -->
+                   <div class="popup-description">
+                     <h3>Effect of Climate Change</h3>
+                     <p>Explore the impact of climate change on Sri Lanka's coastal and inland regions, focusing on
+                       conservation and sustainability efforts.</p>
+                     <button class="btn connect-btn"
+                       onclick="connectToWhatsApp('Effect of Climate Change')">Connect</button>
+                   </div>
+                 </div>
+               </div>
+
+
+                
+
+                 <div class="col-md-4 ftco-animate">
+                   <div class="project-wrap">
+                     <a href="#" class="img" style="background-image: url(images/lesser-known-attractions.jpg);">
+                       <span class="price">$350/person</span>
+                     </a>
+                     <div class="text p-4">
+                       <span class="days">3 Days Tour</span>
+                       <h3><a href="#">Lesser-Known Attractions</a></h3>
+                       <p class="location"><span class="fa fa-map-marker"></span> Ussangoda, Ritigala</p>
+                       <ul>
+                         <li><span class="flaticon-nature"></span> Scenic Landscapes</li>
+                         <li><span class="flaticon-historic"></span> Hidden History</li>
+                         <li><span class="flaticon-adventure"></span> Unique Adventures</li>
+                       </ul>
+                     </div>
+                     <!-- Popup Description -->
+                     <div class="popup-description">
+                       <h3>Lesser-Known Attractions</h3>
+                       <p>Discover Sri Lanka's hidden treasures, including the scenic Ussangoda plains and the ancient
+                         monastic site of Ritigala.</p>
+                       <button class="btn connect-btn"
+                         onclick="connectToWhatsApp('Lesser-Known Attractions')">Connect</button>
+                     </div>
+                   </div>
+                 </div>
+
+                 </div>
+                 <div class="row mt-5">
+                   <div class="col text-center">
+                     <div class="block-27">
+                       <ul>
+                         <li><a href="#">&lt;</a></li>
+                         <li class="active"><span>1</span></li>
+                         <li><a href="#">2</a></li>
+                         <li><a href="#">3</a></li>
+                         <li><a href="#">&gt;</a></li>
+                       </ul>
+                     </div>
+                   </div>
+                 </div>
+                 </div>
+                 </section>
+                 <script>
+                   function connectToWhatsApp(packageName) {
+                     // Prompt user to enter their details
+                     const name = prompt("Please enter your name:");
+                     if (!name) {
+                       alert("Name is required!");
+                       return;
+                     }
+
+                     const email = prompt("Please enter your email:");
+                     if (!email || !validateEmail(email)) {
+                       alert("Valid email is required!");
+                       return;
+                     }
+
+                     const phone = prompt("Please enter your phone number:");
+                     if (!phone) {
+                       alert("Phone number is required!");
+                       return;
+                     }
+
+                     // Add Sri Lanka country code (+94) and remove leading zero if present
+                     const formattedPhone = `94760073341`; // Replace this with the actual WhatsApp number
+
+                     // Format the message
+                     const message = `Hello,%0AI%20am%20interested%20in%20the%20"${packageName}"%20package.%0A%0AName:%20${encodeURIComponent(
+      name
+    )}%0AEmail:%20${encodeURIComponent(email)}%0APhone:%20${encodeURIComponent(
+      phone
+    )}%0A%0APlease%20provide%20more%20details.`;
+
+                     // Generate WhatsApp API link
+                     const whatsappURL = `https://wa.me/${formattedPhone}?text=${message}`;
+
+                     // Redirect to WhatsApp
+                     window.location.href = whatsappURL;
+                   }
+
+                   // Helper function to validate email
+                   function validateEmail(email) {
+                     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                     return regex.test(email);
+                   }
+                 </script>
+
+
+
+
+<section class="ftco-intro ftco-section ftco-no-pt">
+ <div class="container">
+    <div class="row justify-content-center">
+       <div class="col-md-12 text-center">
+          <div class="img"  style="background-image: url(images/bg_b2.jpg);">
+             <div class="overlay"></div>
+             <h2>We Are Pacific A Travel Agency</h2>
+             <p>We can manage your dream building A small river named Duden flows by their place</p>
+             <p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
+         </div>
+     </div>
+ </div>
+</div>
+</section>
+
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(images/bg_3.jpg);">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md pt-5">
+        <div class="ftco-footer-widget pt-md-5 mb-4">
+          <h2 class="ftco-heading-2">About Us</h2>
+          <p>Dedicated to preserving spirituality, exploring history, and inspiring a sense of peace, the
+            Khettarama Foundation invites you to embark on a journey of enlightenment and cultural
+            discovery.</p>
+          <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md pt-5 border-left">
+        <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+          <h2 class="ftco-heading-2">Quick Links</h2>
+          <ul class="list-unstyled">
+            <li><a href="about.html" class="py-2 d-block">About Us</a></li>
+            <li><a href="explore.html" class="py-2 d-block">Explore & Research</a></li>
+            <li><a href="meditation.html" class="py-2 d-block">Meditation & Retreats</a></li>
+            <li><a href="community.html" class="py-2 d-block">Community Programs</a></li>
+            <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md pt-5 border-left">
+        <div class="ftco-footer-widget pt-md-5 mb-4">
+          <h2 class="ftco-heading-2">Contact Us</h2>
+          <div class="block-23 mb-3">
+            <ul>
+              <li><span class="icon fa fa-map-marker"></span><span class="text">SRI SUMANGALA PIREVAN
+                  SCHOOL, Kovana, Hindagolla, Kurunegala, Sri Lanka</span></li>
+              <li><a href="tel:+94702278344"><span class="icon fa fa-phone"></span><span class="text">+94 702 278
+                    344</span></a></li>
+              <li><a href="tel:+94372236034"><span class="icon fa fa-phone"></span><span class="text">+94 372 236
+                    034</span></a></li>
+              <li><a href="tel:+94713000357"><span class="icon fa fa-phone"></span><span class="text">+94 713 000
+                    357</span></a></li>
+              <li><a href="mailto:revkowanepalithathero@gmail.com"><span class="icon fa fa-paper-plane"></span><span
+                    class="text">revkowanepalithathero@gmail.com</span></a></li>
+              <li><a href="mailto:damma1984@gmail.com"><span class="icon fa fa-paper-plane"></span><span
+                    class="text">damma1984@gmail.com</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p>
+          Copyright &copy;<script>
+            document.write(new Date().getFullYear());
+          </script> All rights reserved | Built with <i class="fa fa-heart" aria-hidden="true"></i> by
+          Khettarama Foundation.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

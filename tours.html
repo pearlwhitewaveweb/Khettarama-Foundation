@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Khettarama Foundation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Khettarama <span>Foundation</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="tours.html" class="nav-link">Historic Tours</a></li>
+          <li class="nav-item"><a href="explore.html" class="nav-link">Explore & Research</a></li>
+          <li class="nav-item"><a href="meditation.html" class="nav-link">Meditation & Retreats</a></li>
+          <li class="nav-item"><a href="community.html" class="nav-link">Community Programs</a></li>
+          <li class="nav-item"><a href="donate.html" class="nav-link">Donate & Support</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- END nav -->
+
+  <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_a.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+        <div class="col-md-9 ftco-animate pb-5 text-center">
+          <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
+                  class="fa fa-chevron-right"></i></a></span> <span>Tour List <i class="fa fa-chevron-right"></i></span>
+          </p>
+          <h1 class="mb-0 bread">Tours List</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="ftco-section">
+  <div class="container">
+    <!-- Filter Bar -->
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <div class="filter-bar d-flex align-items-center justify-content-between p-3 bg-light rounded">
+          <form id="filterForm" class="d-flex w-100 align-items-center">
+            <!-- Search Bar -->
+            <div class="form-group mb-0 mr-2 w-50">
+              <label for="searchPackage" class="sr-only">Search</label>
+              <input type="text" id="searchPackage" class="form-control"
+                placeholder="Search by package name or location">
+            </div>
+            <!-- Dropdown for Package Names -->
+            <div class="form-group mb-0 mr-2">
+              <label for="packageDropdown" class="mr-2">Select Package:</label>
+              <select id="packageDropdown" class="form-control">
+                <option value="all">All</option>
+                <!-- Dynamically populated options will go here -->
+              </select>
+            </div>
+            <!-- Price Range Filter -->
+            <div class="form-group mb-0 mr-2">
+              <label for="priceRange" class="mr-2">Price Range:</label>
+              <select id="priceRange" class="form-control">
+                <option value="all">All</option>
+                <option value="0-100">$0 - $100</option>
+                <option value="100-300">$100 - $300</option>
+                <option value="300-500">$300 - $500</option>
+                <option value="500-1000">$500 - $1000</option>
+                <option value="1000-5000">$1000 - $5000</option>
+              </select>
+            </div>
+            <!-- Submit Button -->
+            <button type="button" class="btn btn-primary ml-2" onclick="filterPackages()">Filter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  // Function to dynamically populate the dropdown with package names
+  document.addEventListener("DOMContentLoaded", () => {
+    const packageDropdown = document.getElementById("packageDropdown");
+    const packages = document.querySelectorAll(".project-wrap");
+
+    packages.forEach((packageElement) => {
+      const packageName = packageElement.querySelector("h3 a").textContent.trim();
+      const option = document.createElement("option");
+      option.value = packageName.toLowerCase();
+      option.textContent = packageName;
+      packageDropdown.appendChild(option);
+    });
+  });
+
+  // Function to filter packages
+  function filterPackages() {
+    const searchInput = document.getElementById("searchPackage").value.toLowerCase();
+    const selectedPackage = document.getElementById("packageDropdown").value;
+    const selectedRange = document.getElementById("priceRange").value;
+    const packages = document.querySelectorAll(".project-wrap");
+
+    packages.forEach((packageElement) => {
+      const packageName = packageElement.querySelector("h3 a").textContent.toLowerCase();
+      const packageLocation = packageElement.querySelector(".location").textContent.toLowerCase();
+      const packagePrice = parseInt(
+        packageElement.querySelector(".price").textContent.replace("$", "").replace("/person", ""),
+        10
+      );
+
+      // Check search term against package name and location
+      const matchesSearch = packageName.includes(searchInput) || packageLocation.includes(searchInput);
+
+      // Check selected package filter
+      const matchesPackage = selectedPackage === "all" || packageName === selectedPackage;
+
+      // Parse and check price range filter
+      let matchesPriceRange = true;
+      if (selectedRange !== "all") {
+        const [minPrice, maxPrice] = selectedRange.split("-").map(Number);
+        matchesPriceRange = packagePrice >= minPrice && packagePrice <= maxPrice;
+      }
+
+      // Show or hide packages based on all conditions
+      if (matchesSearch && matchesPackage && matchesPriceRange) {
+        packageElement.parentElement.style.display = "block";
+      } else {
+        packageElement.parentElement.style.display = "none";
+      }
+    });
+  }
+</script>
+
+
+<style>
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  .filter-bar .form-group {
+    margin-bottom: 0;
+    flex-grow: 1;
+  }
+
+  .filter-bar .form-group input,
+  .filter-bar .form-group select {
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .filter-bar .form-group label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 10px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .filter-bar .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: #ff5a5f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .filter-bar .btn:hover {
+    background-color: #e94e54;
+  }
+
+  @media (max-width: 768px) {
+    .filter-bar {
+      flex-wrap: wrap;
+    }
+
+    .filter-bar .form-group,
+    .filter-bar .btn {
+      flex: 1 1 100%;
+      margin-bottom: 10px;
+    }
+  }
+</style>
+
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row">
+      <!-- Package 1 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-1.jpg);">
+            <span class="price">$100/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">1 Day Tour</span>
+            <h3><a href="#">Colombo City Highlights</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Colombo, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>1</li>
+              <li><span class="flaticon-king-size"></span>0</li>
+              <li><span class="flaticon-bus"></span>City Tour</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Colombo City Highlights', '$100/person', '1 Day Tour', 'Colombo, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+      <!-- Package 2 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-2.jpg);">
+            <span class="price">$300/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">2 Days Tour</span>
+            <h3><a href="#">Dambulla & Sigiriya</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Cultural Triangle, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>1</li>
+              <li><span class="flaticon-king-size"></span>1</li>
+              <li><span class="flaticon-mountains"></span>Near Mountain</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Dambulla & Sigiriya', '$300/person', '2 Days Tour', 'Cultural Triangle, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+      <!-- Package 3 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-3.jpg);">
+            <span class="price">$500/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">3 Days Tour</span>
+            <h3><a href="#">Anuradhapura Heritage Tour</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Anuradhapura, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>2</li>
+              <li><span class="flaticon-king-size"></span>1</li>
+              <li><span class="flaticon-historic"></span>Historic Landmarks</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Anuradhapura Heritage Tour', '$500/person', '3 Days Tour', 'Anuradhapura, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+      <!-- Package 4 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-4.jpg);">
+            <span class="price">$750/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">4 Days Tour</span>
+            <h3><a href="#">Kandy & Tea Estates</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Kandy, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>3</li>
+              <li><span class="flaticon-king-size"></span>1</li>
+              <li><span class="flaticon-mountains"></span>Tea Plantations</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Kandy & Tea Estates', '$750/person', '4 Days Tour', 'Kandy, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+      <!-- Package 5 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-5.jpg);">
+            <span class="price">$1,000/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">5 Days Tour</span>
+            <h3><a href="#">Southern Beaches & Temples</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Galle, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>4</li>
+              <li><span class="flaticon-king-size"></span>2</li>
+              <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Southern Beaches & Temples', '$1,000/person', '5 Days Tour', 'Galle, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+      <!-- Package 6 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-6.jpg);">
+            <span class="price">$1,500/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">6 Days Tour</span>
+            <h3><a href="#">Adam's Peak Spiritual Trek</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Central Highlands, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>3</li>
+              <li><span class="flaticon-king-size"></span>2</li>
+              <li><span class="flaticon-historic"></span>Historic Pilgrimage</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Adam\'s Peak Spiritual Trek', '$1,500/person', '6 Days Tour', 'Central Highlands, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+      <!-- Package 7 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-7.jpg);">
+            <span class="price">$3,000/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">7 Days Tour</span>
+            <h3><a href="#">Sacred Highlands Experience</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Ella, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>5</li>
+              <li><span class="flaticon-king-size"></span>3</li>
+              <li><span class="flaticon-sun-umbrella"></span>Scenic Views</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Sacred Highlands Experience', '$3,000/person', '7 Days Tour', 'Ella, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 8 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-8.jpg);">
+            <span class="price">$5,000/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">8 Days Tour</span>
+            <h3><a href="#">Luxury Southern Exploration</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Mirissa, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>7</li>
+              <li><span class="flaticon-king-size"></span>4</li>
+              <li><span class="flaticon-sun-umbrella"></span>Beach Luxury</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Luxury Southern Exploration', '$5,000/person', '8 Days Tour', 'Mirissa, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 9 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-9.jpg);">
+            <span class="price">$7,500/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">10 Days Tour</span>
+            <h3><a href="#">Premium Wellness Tour</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Habarana, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>9</li>
+              <li><span class="flaticon-king-size"></span>5</li>
+              <li><span class="flaticon-historic"></span>Wellness & Heritage</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Premium Wellness Tour', '$7,500/person', '10 Days Tour', 'Habarana, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 10 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-10.jpg);">
+            <span class="price">$15,000/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">14 Days Tour</span>
+            <h3><a href="#">Coastal & Cultural Elegance</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Galle & South Coast, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>10</li>
+              <li><span class="flaticon-king-size"></span>6</li>
+              <li><span class="flaticon-sun-umbrella"></span>Luxury Coast</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Coastal & Cultural Elegance', '$15,000/person', '14 Days Tour', 'Galle & South Coast, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 11 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-11.jpg);">
+            <span class="price">$20,000/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">15 Days Tour</span>
+            <h3><a href="#">Complete Cultural Circle</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Nationwide, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>12</li>
+              <li><span class="flaticon-king-size"></span>7</li>
+              <li><span class="flaticon-historic"></span>Heritage Luxury</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Complete Cultural Circle', '$20,000/person', '15 Days Tour', 'Nationwide, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 12 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-12.jpg);">
+            <span class="price">$50,000/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">20 Days Tour</span>
+            <h3><a href="#">Elite Heritage Immersion</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Countrywide, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>15</li>
+              <li><span class="flaticon-king-size"></span>10</li>
+              <li><span class="flaticon-historic"></span>Exclusive Heritage</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Elite Heritage Immersion', '$50,000/person', '20 Days Tour', 'Countrywide, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 13 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-13.jpg);">
+            <span class="price">$500,000/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">30 Days Tour</span>
+            <h3><a href="#">Philanthropic Tour</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>25</li>
+              <li><span class="flaticon-king-size"></span>15</li>
+              <li><span class="flaticon-historic"></span>Luxury & Giving</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Philanthropic Tour', '$500,000/person', '30 Days Tour', 'Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 14 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-14.jpg);">
+            <span class="price">$1,000,000/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">40 Days Tour</span>
+            <h3><a href="#">Luxury & Legacy Tour</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Countrywide, Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>30</li>
+              <li><span class="flaticon-king-size"></span>20</li>
+              <li><span class="flaticon-historic"></span>Exclusive Legacy</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Luxury & Legacy Tour', '$1,000,000/person', '40 Days Tour', 'Countrywide, Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 15 -->
+      <div class="col-md-4 ftco-animate">
+        <div class="project-wrap">
+          <a href="#" class="img" style="background-image: url(images/package-15.jpg);">
+            <span class="price">$2,000,000/person</span>
+          </a>
+          <div class="text p-4">
+            <span class="days">60 Days Tour</span>
+            <h3><a href="#">Ultimate Heritage & Luxury</a></h3>
+            <p class="location"><span class="fa fa-map-marker"></span> Sri Lanka</p>
+            <ul>
+              <li><span class="flaticon-shower"></span>50</li>
+              <li><span class="flaticon-king-size"></span>25</li>
+              <li><span class="flaticon-historic"></span>Ultra Luxury</li>
+            </ul>
+            <button class="btn btn-primary mt-2 connect-btn"
+              onclick="connectToWhatsApp('Ultimate Heritage & Luxury', '$2,000,000/person', '60 Days Tour', 'Sri Lanka')">Connect
+              on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row mt-5">
+      <div class="col text-center">
+        <div class="block-27">
+          <ul>
+            <li><a href="#">&lt;</a></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&gt;</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Styling for Connect Button */
+  .connect-btn {
+    display: inline-block;
+    background-color: #25d366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .connect-btn:hover {
+    background-color: #1da851;
+  }
+
+  /* Style for project cards */
+  .project-wrap {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .project-wrap:hover {
+    transform: translateY(-5px);
+  }
+
+  .project-wrap .img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .project-wrap .text {
+    padding: 20px;
+    background: #fff;
+  }
+
+  .project-wrap .text h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .project-wrap .text p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .project-wrap .text ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+  }
+
+  .project-wrap .text ul li {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .project-wrap .price {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ff5a5f;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+</style>
+
+<script>
+  function connectToWhatsApp(packageName) {
+    // Prompt user to enter their details
+    const name = prompt("Please enter your name:");
+    if (!name) {
+      alert("Name is required!");
+      return;
+    }
+
+    const email = prompt("Please enter your email:");
+    if (!email || !validateEmail(email)) {
+      alert("Valid email is required!");
+      return;
+    }
+
+    const phone = prompt("Please enter your phone number:");
+    if (!phone) {
+      alert("Phone number is required!");
+      return;
+    }
+
+    // Add Sri Lanka country code (+94) and remove leading zero if present
+    const formattedPhone = `94760073341`; // Replace this with the actual WhatsApp number
+
+    // Format the message
+    const message = `Hello,%0AI%20am%20interested%20in%20the%20"${packageName}"%20package.%0A%0AName:%20${encodeURIComponent(
+      name
+    )}%0AEmail:%20${encodeURIComponent(email)}%0APhone:%20${encodeURIComponent(
+      phone
+    )}%0A%0APlease%20provide%20more%20details.`;
+
+    // Generate WhatsApp API link
+    const whatsappURL = `https://wa.me/${formattedPhone}?text=${message}`;
+
+    // Redirect to WhatsApp
+    window.location.href = whatsappURL;
+  }
+
+  // Helper function to validate email
+  function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+</script>
+
+
+<section class="ftco-intro ftco-section ftco-no-pt">
+ <div class="container">
+    <div class="row justify-content-center">
+       <div class="col-md-12 text-center">
+          <div class="img"  style="background-image: url(images/bg_2.jpg);">
+             <div class="overlay"></div>
+             <h2>We Are Pacific A Travel Agency</h2>
+             <p>We can manage your dream building A small river named Duden flows by their place</p>
+             <p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
+         </div>
+     </div>
+ </div>
+</div>
+</section>
+
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(images/bg_3.jpg);">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md pt-5">
+        <div class="ftco-footer-widget pt-md-5 mb-4">
+          <h2 class="ftco-heading-2">About</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-md pt-5 border-left">
+    <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+      <h2 class="ftco-heading-2">Infromation</h2>
+      <ul class="list-unstyled">
+        <li><a href="#" class="py-2 d-block">Online Enquiry</a></li>
+        <li><a href="#" class="py-2 d-block">General Enquiries</a></li>
+        <li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
+        <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
+        <li><a href="#" class="py-2 d-block">Refund Policy</a></li>
+        <li><a href="#" class="py-2 d-block">Call Us</a></li>
+    </ul>
+</div>
+</div>
+<div class="col-md pt-5 border-left">
+   <div class="ftco-footer-widget pt-md-5 mb-4">
+      <h2 class="ftco-heading-2">Experience</h2>
+      <ul class="list-unstyled">
+        <li><a href="#" class="py-2 d-block">Adventure</a></li>
+        <li><a href="#" class="py-2 d-block">Hotel and Restaurant</a></li>
+        <li><a href="#" class="py-2 d-block">Beach</a></li>
+        <li><a href="#" class="py-2 d-block">Nature</a></li>
+        <li><a href="#" class="py-2 d-block">Camping</a></li>
+        <li><a href="#" class="py-2 d-block">Party</a></li>
+    </ul>
+</div>
+</div>
+<div class="col-md pt-5 border-left">
+    <div class="ftco-footer-widget pt-md-5 mb-4">
+       <h2 class="ftco-heading-2">Have a Questions?</h2>
+       <div class="block-23 mb-3">
+         <ul>
+           <li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+           <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+           <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+       </ul>
+   </div>
+</div>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+
+    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+  </div>
+</div>
+</div>
+</footer>
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquery-migrate-3.0.1.min.js"></script>
+ <script src="js/popper.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script src="js/jquery.easing.1.3.js"></script>
+ <script src="js/jquery.waypoints.min.js"></script>
+ <script src="js/jquery.stellar.min.js"></script>
+ <script src="js/owl.carousel.min.js"></script>
+ <script src="js/jquery.magnific-popup.min.js"></script>
+ <script src="js/jquery.animateNumber.min.js"></script>
+ <script src="js/bootstrap-datepicker.js"></script>
+ <script src="js/scrollax.min.js"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
+ </script>
+ <script src="js/google-map.js"></script>
+ <script src="js/main.js"></script>
+ </body>
+
+ </html>
