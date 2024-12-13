@@ -43,23 +43,118 @@
 		</div>
 	</nav>
 
-	<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_5.jpg');">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
-				<div class="col-md-7 ftco-animate">
-					<span class="subheading">Welcome to Khettarama Foundation</span>
-					<h1 class="mb-4">Explore, Meditate, and Connect with the World</h1>
-					<p class="caps">Join us in discovering serenity, wisdom, and global connections for a better future.
-					</p>
-				</div>
-				<a href="https://vimeo.com/45830194"
-					class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
-					<span class="fa fa-play"></span>
-				</a>
+<!-- Hero Section -->
+<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_5.jpg');">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+			<div class="col-md-7 ftco-animate">
+				<span class="subheading">Welcome to Khettarama Foundation</span>
+				<h1 class="mb-4">Explore, Meditate, and Connect with the World</h1>
+				<p class="caps">Join us in discovering serenity, wisdom, and global connections for a better future.</p>
 			</div>
+			<a href="#" id="video-button" class="icon-video d-flex align-items-center justify-content-center mb-4">
+				<span class="fa fa-play"></span>
+			</a>
 		</div>
 	</div>
+</div>
+
+<!-- Video Modal -->
+<div id="video-modal" class="video-modal">
+	<div class="video-modal-content">
+		<span id="video-close" class="video-close">&times;</span>
+		<video id="modal-video" controls>
+			<source src="video/srilanka.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+	</div>
+</div>
+
+<!-- CSS for Modal -->
+<style>
+	.video-modal {
+		display: none;
+		position: fixed;
+		z-index: 1000;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgba(0, 0, 0, 0.9);
+	}
+
+	.video-modal-content {
+		position: relative;
+		margin: auto;
+		padding: 20px;
+		width: 80%;
+		max-width: 800px;
+		text-align: center;
+	}
+
+	.video-close {
+		position: absolute;
+		top: 10px;
+		right: 20px;
+		font-size: 30px;
+		color: white;
+		cursor: pointer;
+	}
+
+	.video-close:hover {
+		color: red;
+	}
+
+	video {
+		width: 100%;
+		height: auto;
+	}
+</style>
+
+<!-- JavaScript for Modal -->
+<script>
+	// Get references to elements
+	const videoButton = document.getElementById("video-button");
+	const videoModal = document.getElementById("video-modal");
+	const videoClose = document.getElementById("video-close");
+	const modalVideo = document.getElementById("modal-video");
+
+	// Open the modal and play the video
+	videoButton.addEventListener("click", function (event) {
+		event.preventDefault();
+		videoModal.style.display = "block"; // Show the modal
+		modalVideo.play(); // Start playing the video
+	});
+
+	// Close the modal and stop the video
+	function closeModal() {
+		videoModal.style.display = "none"; // Hide the modal
+		modalVideo.pause(); // Pause the video
+		modalVideo.currentTime = 0; // Reset the video to the beginning
+	}
+
+	// Close the modal when clicking the close button
+	videoClose.addEventListener("click", function () {
+		closeModal();
+	});
+
+	// Close the modal when clicking outside the video modal content
+	videoModal.addEventListener("click", function (event) {
+		if (event.target === videoModal) {
+			closeModal();
+		}
+	});
+
+	// Close the modal when pressing the Escape key
+	window.addEventListener("keydown", function (event) {
+		if (event.key === "Escape") {
+			closeModal();
+		}
+	});
+</script>
+
 
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
